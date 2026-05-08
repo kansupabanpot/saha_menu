@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light">
+<title>SAHA — Door Sign</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  /* ─────────── Stage ─────────── */
+  html, body { margin: 0; padding: 0; }
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    box-sizing: border-box;
+  }
+
+  .stage {
+    width: 100%;
+    min-height: calc(100vh - 64px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #2a2520;
+    background-image:
+      radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.04), transparent 60%),
+      radial-gradient(ellipse at 70% 80%, rgba(255,255,255,0.03), transparent 60%);
+  }
+  /* Surface contexts use a moodier backdrop so the sign reads in situ */
+  .stage--decal      { background: #1f2329; }
+  .stage--chalkboard { background: #3a2e25; }
+  .stage--enamel     { background: #1e1c1a; }
+
+  /* ─────────── Sign frame ─────────── */
+  .sign {
+    position: relative;
+    box-sizing: border-box;
+    color: var(--saha-crimson);
+    text-align: center;
+    transition: background 200ms var(--ease-firm), color 200ms var(--ease-firm);
+  }
+  .sign--portrait  { width: 480px; min-height: 720px; padding: 56px 48px; }
+  .sign--landscape { width: 720px; min-height: 480px; padding: 48px 64px; }
+
+  .sign__inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: inherit;
+    gap: 18px;
+  }
+  .sign--landscape .sign__inner { gap: 14px; }
+
+  /* ─────────── Surface variants ─────────── */
+  /* Parchment: cream textile with the existing background image, framed */
+  .sign--parchment {
+    background-image: url("../assets/saha-bg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    box-shadow: 6px 6px 0 var(--saha-black);
+  }
+
+  /* Window decal: single-color cut-vinyl on glass — transparent fill, crimson glyphs */
+  .sign--decal {
+    background: transparent;
+    color: var(--saha-crimson);
+    border: 3px solid var(--saha-crimson);
+    box-shadow: none;
+  }
+  .sign--decal .sign__inner {
+    /* simulate frosted glass behind */
+    background: rgba(245, 240, 200, 0.06);
+    backdrop-filter: blur(2px);
+    padding: 8px;
+    margin: -8px;
+    box-sizing: content-box;
+  }
+  .sign--decal .crest__sub,
+  .sign--decal .hours__label,
+  .sign--decal .phone__label,
+  .sign--decal .closure__note { color: var(--saha-crimson); opacity: 0.78; }
+
+  /* Chalkboard: deep black ground, cream "chalk" — black is fill here, but mounted is fine */
+  .sign--chalkboard {
+    background: #141414;
+    color: var(--saha-cream);
+    border: 8px double rgba(245, 240, 200, 0.55);
+    box-shadow: 6px 6px 0 var(--saha-crimson);
+  }
+  .sign--chalkboard .crest__name,
+  .sign--chalkboard .status__word,
+  .sign--chalkboard .hours__num,
+  .sign--chalkboard .closure__en strong,
+  .sign--chalkboard .closure__th strong { color: var(--saha-cream); }
+  .sign--chalkboard .hairline { background: rgba(245, 240, 200, 0.45); }
+  .sign--chalkboard .crest__sub,
+  .sign--chalkboard .hours__label,
+  .sign--chalkboard .phone__label,
+  .sign--chalkboard .hours__last,
+  .sign--chalkboard .closure__note { color: rgba(245, 240, 200, 0.75); }
+  .sign--chalkboard .phone__num {
+    background: var(--saha-cream);
+    color: var(--saha-crimson);
+    border-color: var(--saha-cream);
+    box-shadow: 4px 4px 0 var(--saha-crimson);
+  }
+  .sign--chalkboard .status__th,
+  .sign--chalkboard .closure__th,
+  .sign--chalkboard .hours__last .th { color: var(--saha-cream); }
+
+  /* Enamel: thick crimson plaque with cream lettering — pub-style hanging sign */
+  .sign--enamel {
+    background: var(--saha-crimson);
+    color: var(--saha-cream);
+    border: 6px solid var(--saha-cream);
+    outline: 2px solid var(--saha-crimson);
+    outline-offset: 2px;
+    box-shadow: 8px 8px 0 var(--saha-black);
+  }
+  .sign--enamel .crest__name,
+  .sign--enamel .status__word,
+  .sign--enamel .hours__num,
+  .sign--enamel .status__th,
+  .sign--enamel .closure__en strong,
+  .sign--enamel .closure__th strong { color: var(--saha-cream); }
+  .sign--enamel .crest__sub,
+  .sign--enamel .hours__label,
+  .sign--enamel .phone__label,
+  .sign--enamel .hours__last,
+  .sign--enamel .closure__note,
+  .sign--enamel .closure__th,
+  .sign--enamel .closure__en { color: rgba(245, 240, 200, 0.88); }
+  .sign--enamel .hairline { background: rgba(245, 240, 200, 0.55); }
+  .sign--enamel .phone__num {
+    background: var(--saha-cream);
+    color: var(--saha-crimson);
+    border-color: var(--saha-cream);
+    box-shadow: 4px 4px 0 var(--saha-black);
+  }
+
+  /* CLOSED state recolors the dominant word in burgundy */
+  .sign--closed-state .status__word { color: #5C1A1A; }
+  .sign--closed-state.sign--chalkboard .status__word,
+  .sign--closed-state.sign--enamel .status__word { color: var(--saha-cream); opacity: 0.7; }
+
+  /* ─────────── Crest ─────────── */
+  .crest {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .crest__emblem {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    flex: none;
+  }
+  .sign--landscape .crest__emblem { width: 64px; height: 64px; }
+  .sign--chalkboard .crest__emblem,
+  .sign--enamel     .crest__emblem { filter: invert(1) brightness(1.1) saturate(0); }
+
+  .crest__wordmark { text-align: left; line-height: 1; }
+  .crest__name {
+    font-family: var(--font-display-en);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-size: 38px;
+    line-height: 0.9;
+  }
+  .crest__sub {
+    font-family: var(--font-support);
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    font-size: 11px;
+    margin-top: 4px;
+    color: var(--saha-ink-soft);
+  }
+
+  /* ─────────── Hairline rule ─────────── */
+  .hairline {
+    height: 2px;
+    background: var(--saha-crimson);
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  /* ─────────── Status (the dominant word) ─────────── */
+  .status {
+    margin: 6px 0;
+    line-height: 0.85;
+  }
+  .status__word {
+    font-family: var(--font-display-en);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    font-size: 168px;
+    line-height: 0.85;
+    color: var(--saha-crimson);
+  }
+  .sign--landscape .status__word { font-size: 136px; }
+  .status__th {
+    font-family: var(--font-display-th);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    font-size: 56px;
+    line-height: 1;
+    margin-top: 4px;
+    color: var(--saha-crimson);
+  }
+  .sign--landscape .status__th { font-size: 44px; }
+
+  /* ─────────── Hours ─────────── */
+  .hours {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .hours__label {
+    font-family: var(--font-support);
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    font-size: 12px;
+    color: var(--saha-ink-soft);
+  }
+  .hours__time {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 14px;
+    font-family: var(--font-display-en);
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: 0.01em;
+  }
+  .sign--landscape .hours__time { font-size: 64px; }
+  .hours__dash { opacity: 0.6; font-size: 0.7em; }
+  .hours__last {
+    font-family: var(--font-support);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 13px;
+    color: var(--saha-ink-soft);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hours__last .sep { opacity: 0.5; }
+  .hours__last .th {
+    font-family: var(--font-display-th);
+    font-weight: 300;
+    text-transform: none;
+    letter-spacing: -0.02em;
+    font-size: 18px;
+  }
+
+  /* ─────────── Phone ─────────── */
+  .phone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+    padding-top: 14px;
+  }
+  .phone__label {
+    font-family: var(--font-support);
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    font-size: 11px;
+    color: var(--saha-ink-soft);
+  }
+  .phone__num {
+    font-family: var(--font-display-en);
+    letter-spacing: 0.06em;
+    font-size: 44px;
+    line-height: 1;
+    padding: 12px 22px 10px;
+    background: var(--saha-crimson);
+    color: var(--saha-cream);
+    border: 2px solid var(--saha-crimson);
+    box-shadow: 4px 4px 0 var(--saha-black);
+  }
+
+  /* ─────────── Closure (Tuesday) ─────────── */
+  .closure {
+    margin-top: 14px;
+    padding-top: 16px;
+    border-top: 2px solid var(--saha-crimson);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .sign--chalkboard .closure { border-top-color: rgba(245, 240, 200, 0.45); }
+  .sign--enamel .closure { border-top-color: rgba(245, 240, 200, 0.55); }
+  .closure__en {
+    font-family: var(--font-support);
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 14px;
+    color: var(--saha-crimson);
+  }
+  .closure__en strong {
+    font-family: var(--font-display-en);
+    letter-spacing: 0.02em;
+    font-weight: 700;
+    font-size: 22px;
+    margin-left: 6px;
+  }
+  .closure__th {
+    font-family: var(--font-display-th);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    font-size: 26px;
+    line-height: 1.1;
+    color: var(--saha-crimson);
+  }
+  .closure__th strong {
+    font-weight: 300;
+    color: #5C1A1A;
+    margin-left: 4px;
+  }
+  .sign--chalkboard .closure__th strong,
+  .sign--enamel     .closure__th strong { color: var(--saha-cream); }
+  .closure__note {
+    font-family: var(--font-display-th);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    font-size: 16px;
+    line-height: 1.3;
+    color: var(--saha-ink-soft);
+    margin-top: 2px;
+  }
+
+  /* ─────────── Landscape tightening ─────────── */
+  .sign--landscape .sign__inner {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 14px 32px;
+    align-items: center;
+    text-align: left;
+  }
+  .sign--landscape .crest         { grid-column: 1 / -1; justify-content: flex-start; }
+  .sign--landscape .hairline      { grid-column: 1 / -1; width: 100%; margin: 0; }
+  .sign--landscape .status        { grid-column: 1; text-align: left; }
+  .sign--landscape .status .status__word,
+  .sign--landscape .status .status__th { text-align: left; }
+  .sign--landscape .hours         { grid-column: 2; align-items: flex-start; text-align: left; }
+  .sign--landscape .hours__label,
+  .sign--landscape .hours__time,
+  .sign--landscape .hours__last   { text-align: left; }
+  .sign--landscape .hours__last   { justify-content: flex-start; }
+  .sign--landscape .phone         { grid-column: 1; align-items: flex-start; padding-top: 0; margin-top: 0; }
+  .sign--landscape .closure       { grid-column: 2; border-top: none; padding-top: 0; margin-top: 0; text-align: left; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="opening-hours.jsx"></script>
+</body>
+</html>

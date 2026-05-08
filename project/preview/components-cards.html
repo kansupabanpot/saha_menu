@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SAHA — Cards</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 22px; background: var(--saha-cream); display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .card {
+    background: var(--saha-cream-deep);
+    border: 2px solid var(--saha-crimson);
+    box-shadow: 4px 4px 0 var(--saha-crimson);
+    overflow: hidden;
+  }
+  .card .banner {
+    background: var(--saha-crimson);
+    color: var(--saha-cream);
+    padding: 6px 12px;
+    font-family: var(--font-support);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .card .body { padding: 14px 14px 16px; }
+  .card .title {
+    font-family: var(--font-display-en);
+    color: var(--saha-crimson);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    font-size: 28px;
+    line-height: 1;
+    margin: 0 0 4px;
+  }
+  .card .th {
+    font-family: var(--font-display-th);
+    color: var(--saha-crimson);
+    font-size: 16px;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .card .desc {
+    font-family: var(--font-support);
+    color: var(--saha-ink-soft);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    line-height: 1.45;
+  }
+  .card.crimson { background: var(--saha-crimson); border-color: var(--saha-crimson); box-shadow: 4px 4px 0 var(--saha-black); }
+  .card.crimson .title, .card.crimson .th { color: var(--saha-cream); }
+  .card.crimson .desc { color: #F5F0C8; opacity: 0.9; }
+  .card.crimson .banner { background: var(--saha-cream); color: var(--saha-crimson); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="banner"><span>Cut · Ribeye</span><span>฿1,290</span></div>
+    <div class="body">
+      <div class="title">Dry-Aged Ribeye</div>
+      <div class="th">ริบอายบ่มแห้ง</div>
+      <div class="desc">350 g · 45 days · grass-fed Australian. Cooked over charcoal.</div>
+    </div>
+  </div>
+  <div class="card crimson">
+    <div class="banner"><span>House Special</span><span>Limited</span></div>
+    <div class="body">
+      <div class="title">Tomahawk 1.2 KG</div>
+      <div class="th">โทมาฮอว์ก ๑.๒ กก.</div>
+      <div class="desc">Bone-in. Reserve 24 hours ahead. Serves two.</div>
+    </div>
+  </div>
+</body>
+</html>

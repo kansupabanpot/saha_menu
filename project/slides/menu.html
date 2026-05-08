@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SAHA — Menu Slide</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; }
+  .slide {
+    width: 1280px; height: 720px;
+    background-image: url("../assets/saha-bg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding: 80px 110px;
+    box-sizing: border-box;
+    color: var(--saha-crimson);
+  }
+  .head {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .eyebrow {
+    font-family: var(--font-support);
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    font-size: 14px;
+  }
+  .h1 {
+    font-family: var(--font-display-en);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    font-size: 80px;
+    line-height: 0.9;
+    margin: 6px 0 4px;
+  }
+  .th {
+    font-family: var(--font-display-th);
+    font-size: 38px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-top: 6px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 60px;
+    row-gap: 14px;
+    margin-top: 12px;
+  }
+  .item {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 2px dotted var(--saha-crimson);
+  }
+  .item .name {
+    font-family: var(--font-display-en);
+    text-transform: uppercase;
+    letter-spacing: 0;
+    font-size: 28px;
+    line-height: 1;
+  }
+  .item .th-name {
+    font-family: var(--font-display-th);
+    font-size: 22px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-left: 10px;
+    opacity: 0.95;
+  }
+  .item .price {
+    margin-left: auto;
+    font-family: var(--font-support);
+    letter-spacing: 0.08em;
+    font-size: 22px;
+  }
+  .footer {
+    margin-top: 24px;
+    text-align: center;
+    font-family: var(--font-support);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="head">
+      <div class="eyebrow">The Butcher's Board</div>
+      <div class="h1">Cuts of the Day</div>
+      <div class="th">เมนูประจำวัน</div>
+    </div>
+    <div class="grid">
+      <div class="item"><span class="name">Ribeye</span><span class="th-name">ริบอาย</span><span class="price">฿1,290</span></div>
+      <div class="item"><span class="name">Tenderloin</span><span class="th-name">เทนเดอร์ลอยน์</span><span class="price">฿1,490</span></div>
+      <div class="item"><span class="name">T-Bone</span><span class="th-name">ทีโบน</span><span class="price">฿1,890</span></div>
+      <div class="item"><span class="name">Wagyu A5</span><span class="th-name">วากิว เอ๕</span><span class="price">฿3,800</span></div>
+      <div class="item"><span class="name">Tomahawk</span><span class="th-name">โทมาฮอว์ก</span><span class="price">฿2,890</span></div>
+      <div class="item"><span class="name">Lamb Rack</span><span class="th-name">ซี่โครงแกะ</span><span class="price">฿1,690</span></div>
+    </div>
+    <div class="footer">All cuts · Dry-aged minimum 28 days · Cut to order</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SAHA — Big Quote</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; }
+  .slide {
+    width: 1280px; height: 720px;
+    background: var(--saha-cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 120px;
+    box-sizing: border-box;
+    position: relative;
+  }
+  .slide::before, .slide::after {
+    content: "";
+    position: absolute;
+    left: 80px; right: 80px;
+    height: 4px;
+    background: var(--saha-crimson);
+  }
+  .slide::before { top: 80px; }
+  .slide::after  { bottom: 80px; }
+  .quote {
+    text-align: center;
+    color: var(--saha-crimson);
+  }
+  .mark {
+    font-family: var(--font-display-en);
+    font-size: 100px;
+    line-height: 0.7;
+    margin-bottom: 8px;
+  }
+  .text {
+    font-family: var(--font-display-en);
+    text-transform: uppercase;
+    letter-spacing: -0.005em;
+    font-size: 72px;
+    line-height: 0.95;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+  .attr {
+    font-family: var(--font-support);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 16px;
+  }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="quote">
+      <div class="mark">"</div>
+      <div class="text">Good Beef Doesn't<br>Need a Sauce.</div>
+      <div class="attr">— Khun Anon · Head Butcher</div>
+    </div>
+  </div>
+</body>
+</html>

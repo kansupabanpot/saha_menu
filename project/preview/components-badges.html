@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light">
+<title>SAHA — Badges & Tags</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body {
+    margin: 0;
+    padding: 24px;
+    background: var(--saha-cream);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+  /* Outline badge — cream fill, crimson stroke + text */
+  .badge {
+    font-family: var(--font-support);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 12px;
+    padding: 4px 12px;
+    border: 2px solid var(--saha-crimson);
+    color: var(--saha-crimson);
+    background: var(--saha-cream);
+  }
+  /* Solid crimson — cream text */
+  .badge.solid {
+    background: var(--saha-crimson);
+    color: var(--saha-cream);
+  }
+  /* Burgundy — deeper variant for emphasis */
+  .badge.burgundy {
+    background: #5C1A1A;
+    color: var(--saha-cream);
+    border-color: #5C1A1A;
+  }
+  .badge.pill { border-radius: 999px; }
+
+  /* Stamp variant — black appears only as shadow */
+  .badge.stamp {
+    box-shadow: 2px 2px 0 var(--saha-black);
+  }
+
+  /* Price tag — crimson keyway, cream value, black only as outline + offset shadow */
+  .price-tag {
+    display: inline-flex;
+    align-items: stretch;
+    border: 2px solid var(--saha-black);
+    box-shadow: 3px 3px 0 var(--saha-black);
+    font-family: var(--font-support);
+  }
+  .price-tag .k {
+    background: var(--saha-crimson);
+    color: var(--saha-cream);
+    padding: 6px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 11px;
+  }
+  .price-tag .v {
+    background: var(--saha-cream);
+    color: var(--saha-crimson);
+    padding: 6px 12px;
+    letter-spacing: 0.08em;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+  <div class="row">
+    <span class="badge">Dry-Aged</span>
+    <span class="badge solid">House Cut</span>
+    <span class="badge burgundy">Premium</span>
+    <span class="badge pill">45 Days</span>
+    <span class="badge stamp">Reserve</span>
+  </div>
+  <div class="row">
+    <div class="price-tag"><div class="k">Ribeye</div><div class="v">฿1,290</div></div>
+    <div class="price-tag"><div class="k">Wagyu A5</div><div class="v">฿3,800</div></div>
+  </div>
+</body>
+</html>

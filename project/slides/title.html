@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SAHA — Title Slide</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; }
+  .slide {
+    width: 1280px; height: 720px;
+    background-image: url("../assets/saha-bg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 80px;
+    box-sizing: border-box;
+  }
+  .logo { width: 200px; height: auto; margin-bottom: 24px; }
+  .eyebrow {
+    font-family: var(--font-support);
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    color: var(--saha-crimson);
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  .title {
+    font-family: var(--font-display-en);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: var(--saha-crimson);
+    font-size: 140px;
+    line-height: 0.9;
+    text-align: center;
+    margin: 0;
+  }
+  .thai {
+    font-family: var(--font-display-th);
+    color: var(--saha-crimson);
+    font-size: 38px;
+    letter-spacing: -0.02em;
+    margin-top: 14px;
+  }
+  .meta {
+    margin-top: 28px;
+    font-family: var(--font-support);
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    font-size: 14px;
+    color: var(--saha-crimson);
+  }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <img class="logo" src="../assets/saha-logo.png" alt="SAHA">
+    <div class="eyebrow">Est. Bangkok</div>
+    <h1 class="title">Steak<br>& Butcher</h1>
+    <div class="thai">สเต๊กและช่างเขียง</div>
+    <div class="meta">Dry-aged · Cut to order · Since 2024</div>
+  </div>
+</body>
+</html>

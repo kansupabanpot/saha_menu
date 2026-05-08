@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SAHA — Type Scale</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 18px 22px; background: var(--saha-cream); }
+  .row { display: flex; align-items: baseline; gap: 16px; padding: 6px 0; border-bottom: 1px solid var(--saha-cream-edge); }
+  .row:last-child { border: 0; }
+  .label {
+    width: 90px;
+    font-family: var(--font-support);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 10px;
+    color: var(--saha-ink-soft);
+    flex-shrink: 0;
+  }
+  .sample { color: var(--saha-crimson); }
+  .display { font-family: var(--font-display-en); text-transform: uppercase; letter-spacing: -0.01em; font-size: 56px; line-height: 0.9; }
+  .h1 { font-family: var(--font-display-en); text-transform: uppercase; font-size: 36px; line-height: 1; }
+  .h2 { font-family: var(--font-display-en); text-transform: uppercase; font-size: 26px; line-height: 1; }
+  .h3 { font-family: var(--font-support); text-transform: uppercase; letter-spacing: 0.08em; font-size: 18px; }
+  .body { font-family: var(--font-support); letter-spacing: 0.04em; font-size: 14px; color: var(--saha-ink-soft); }
+  .small { font-family: var(--font-support); text-transform: uppercase; letter-spacing: 0.14em; font-size: 11px; color: var(--saha-ink-soft); }
+</style>
+</head>
+<body>
+  <div class="row"><div class="label">Display 96</div><div class="sample display">Saha</div></div>
+  <div class="row"><div class="label">H1 · 56</div><div class="sample h1">The Butcher's Table</div></div>
+  <div class="row"><div class="label">H2 · 36</div><div class="sample h2">Dry-Aged Cuts</div></div>
+  <div class="row"><div class="label">H3 · 22</div><div class="sample h3">Ask the butcher</div></div>
+  <div class="row"><div class="label">Body · 18</div><div class="sample body">Beef, lamb and house-made charcuterie, cut to order daily.</div></div>
+  <div class="row"><div class="label">Small · 14</div><div class="sample small">EST. BANGKOK · DRY-AGED 45 DAYS</div></div>
+</body>
+</html>

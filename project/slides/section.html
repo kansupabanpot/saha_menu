@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SAHA — Section Slide</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; }
+  .slide {
+    width: 1280px; height: 720px;
+    background: var(--saha-crimson);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .num {
+    position: absolute;
+    top: 60px; left: 80px;
+    font-family: var(--font-support);
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    font-size: 16px;
+    color: var(--saha-cream);
+  }
+  .center { text-align: center; padding: 0 80px; }
+  .title {
+    font-family: var(--font-display-en);
+    text-transform: uppercase;
+    color: var(--saha-cream);
+    font-size: 160px;
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .thai {
+    font-family: var(--font-display-th);
+    color: var(--saha-cream);
+    font-size: 44px;
+    letter-spacing: -0.02em;
+    margin-top: 8px;
+  }
+  .rule { width: 120px; height: 4px; background: var(--saha-cream); margin: 28px auto; }
+  .sub {
+    font-family: var(--font-support);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--saha-cream);
+    font-size: 18px;
+  }
+  .corner {
+    position: absolute;
+    bottom: 60px; right: 80px;
+    width: 100px; height: auto;
+    opacity: 0.7;
+  }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="num">Chapter 02</div>
+    <div class="center">
+      <h1 class="title">The Cuts</h1>
+      <div class="thai">เนื้อของเรา</div>
+      <div class="rule"></div>
+      <div class="sub">Beef · Lamb · House Charcuterie</div>
+    </div>
+    <img class="corner" src="../assets/saha-logo.png" alt="">
+  </div>
+</body>
+</html>

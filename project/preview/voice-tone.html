@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SAHA — Voice & Tone</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--saha-cream); display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .col { padding: 14px; border: 2px solid var(--saha-crimson); }
+  .col h4 {
+    font-family: var(--font-support);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--saha-crimson);
+    font-size: 11px;
+    margin: 0 0 8px;
+  }
+  .col.do { background: var(--saha-cream); }
+  .col.dont { background: var(--saha-cream); border-color: var(--saha-black); border-style: dashed; }
+  .ex {
+    font-family: var(--font-display-en);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: var(--saha-crimson);
+    font-size: 22px;
+    line-height: 1.05;
+    margin-bottom: 4px;
+  }
+  .ex.body { font-family: var(--font-support); font-size: 13px; letter-spacing: 0.04em; color: var(--saha-ink-soft); text-transform: none; }
+  .col.dont .ex { color: var(--saha-ink-soft); text-decoration: line-through; }
+</style>
+</head>
+<body>
+  <div class="col do">
+    <h4>Do</h4>
+    <div class="ex">Cut to order</div>
+    <div class="ex">Dry-aged · 45 days</div>
+    <div class="ex">The butcher's table</div>
+    <div class="ex body">Beef, lamb and house-made charcuterie. Cut daily.</div>
+  </div>
+  <div class="col dont">
+    <h4>Don't</h4>
+    <div class="ex">Amazing steaks!! 🥩</div>
+    <div class="ex">Elevate your dining experience</div>
+    <div class="ex body">We are passionate about leveraging the finest ingredients to deliver an unforgettable journey.</div>
+  </div>
+</body>
+</html>

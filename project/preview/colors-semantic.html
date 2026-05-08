@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SAHA — Semantic Roles</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 18px; background: var(--saha-cream); font-family: var(--font-support); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--saha-cream-edge); }
+  th { font-family: var(--font-support); text-transform: uppercase; letter-spacing: 0.1em; color: #555; font-weight: normal; font-size: 11px; }
+  .chip { display: inline-block; width: 20px; height: 20px; border: 2px solid var(--saha-black); vertical-align: middle; margin-right: 8px; }
+  .tok { font-family: ui-monospace, monospace; color: var(--saha-crimson); font-size: 12px; }
+  .role { font-family: var(--font-support); text-transform: uppercase; letter-spacing: 0.08em; }
+</style>
+</head>
+<body>
+  <table>
+    <thead><tr><th>Role</th><th>Token</th><th>Resolves to</th></tr></thead>
+    <tbody>
+      <tr><td><span class="chip" style="background:#8B2020"></span><span class="role">FG-1 · Headlines</span></td><td class="tok">--fg-1</td><td class="tok">#8B2020</td></tr>
+      <tr><td><span class="chip" style="background:#3A2E25"></span><span class="role">FG-2 · Body</span></td><td class="tok">--fg-2</td><td class="tok">#3A2E25</td></tr>
+      <tr><td><span class="chip" style="background:#F5F0C8"></span><span class="role">FG-Inv · On Crimson</span></td><td class="tok">--fg-inv</td><td class="tok">#F5F0C8</td></tr>
+      <tr><td><span class="chip" style="background:#F5F0C8"></span><span class="role">BG-1 · Surface</span></td><td class="tok">--bg-1</td><td class="tok">#F5F0C8</td></tr>
+      <tr><td><span class="chip" style="background:#1A1A1A"></span><span class="role">BG-Ink · Dark</span></td><td class="tok">--bg-ink</td><td class="tok">#1A1A1A</td></tr>
+      <tr><td><span class="chip" style="background:#8B2020"></span><span class="role">BG-Accent</span></td><td class="tok">--bg-accent</td><td class="tok">#8B2020</td></tr>
+    </tbody>
+  </table>
+</body>
+</html>

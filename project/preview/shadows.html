@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SAHA — Stamp Shadow</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 28px; background: var(--saha-cream); font-family: var(--font-support); display: flex; gap: 28px; align-items: flex-end; }
+  .demo { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .card {
+    width: 130px; height: 80px;
+    background: var(--saha-cream);
+    border: 2px solid var(--saha-black);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--saha-crimson); text-transform: uppercase; letter-spacing: 0.1em; font-size: 13px;
+  }
+  .stamp-sm { box-shadow: 2px 2px 0 var(--saha-black); }
+  .stamp    { box-shadow: 4px 4px 0 var(--saha-black); }
+  .stamp-rd { box-shadow: 4px 4px 0 var(--saha-crimson); border-color: var(--saha-crimson); color: var(--saha-crimson); }
+  .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--saha-ink-soft); }
+</style>
+</head>
+<body>
+  <div class="demo"><div class="card stamp-sm">Stamp SM</div><div class="lbl">2px 2px 0 black</div></div>
+  <div class="demo"><div class="card stamp">Stamp</div><div class="lbl">4px 4px 0 black</div></div>
+  <div class="demo"><div class="card stamp-rd">Stamp Red</div><div class="lbl">4px 4px 0 crimson</div></div>
+</body>
+</html>

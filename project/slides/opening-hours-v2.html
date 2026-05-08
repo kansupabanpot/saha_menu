@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light">
+<title>SAHA — Door Plaque V2 (production)</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  /* ─────────── Stage (substrate behind the plaque) ─────────── */
+  html, body { margin: 0; padding: 0; }
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    box-sizing: border-box;
+  }
+  .stage {
+    width: 100%;
+    min-height: calc(100vh - 64px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 56px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: background 200ms var(--ease-firm);
+    background-image: url("../assets/saha-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+  }
+
+  /* ─────────── Plaque — landscape 2:1, ~300×150mm IRL ───────── */
+  .plaque {
+    --ink: #8B2020;
+    width: 880px;            /* ~300mm scaled */
+    aspect-ratio: 2 / 1;
+    color: var(--ink);
+    background: transparent; /* substrate shows through; this is cut-vinyl */
+    display: grid;
+    grid-template-columns: 280px 2px 1fr;
+    align-items: stretch;
+    column-gap: 36px;
+    padding: 36px 44px;
+    box-sizing: border-box;
+  }
+  .plaque--outlined {
+    border: 2px solid var(--ink);
+  }
+
+  /* ─────────── Brand block (left) — one unit ─────────────────── */
+  .plaque__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .plaque__emblem {
+    width: 132px;
+    height: 132px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .plaque__emblem img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  /* Recolor logo to match the chosen ink */
+  .plaque__emblem--dark img {
+    /* Crimson tint for dark inks; logo arrives near-black so a slight tint reads */
+    filter: brightness(0) saturate(100%) invert(15%) sepia(73%) saturate(2600%) hue-rotate(347deg) brightness(85%) contrast(95%);
+  }
+  /* When ink is black, push the filter toward true black */
+  .plaque[style*="#1A1A1A"] .plaque__emblem--dark img {
+    filter: brightness(0) saturate(100%);
+  }
+  .plaque__emblem--light img {
+    filter: brightness(0) saturate(100%) invert(100%);
+  }
+  .plaque__wordmark {
+    text-align: center;
+    line-height: 1;
+  }
+  .plaque__name1 {
+    font-family: var(--font-display-en);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 38px;
+    line-height: 0.9;
+  }
+  .plaque__name2 {
+    font-family: var(--font-display-en);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 22px;
+    line-height: 1;
+    margin-top: 6px;
+    white-space: nowrap;
+  }
+
+  /* ─────────── Divider — single hairline only ────────────────── */
+  .plaque__divider {
+    width: 2px;
+    background: var(--ink);
+    align-self: stretch;
+  }
+
+  /* ─────────── Information stack (right) ─────────────────────── */
+  .plaque__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 18px;
+  }
+
+  /* HOURS — the largest element */
+  .plaque__hours {
+    font-family: var(--font-display-en);
+    font-size: 124px;
+    line-height: 0.9;
+    letter-spacing: 0.005em;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: baseline;
+  }
+  .plaque__hours .dash {
+    margin: 0 16px;
+    opacity: 0.7;
+    font-size: 0.7em;
+  }
+  .plaque__last {
+    font-family: var(--font-display-en);
+    text-transform: uppercase;
+    font-size: 28px;
+    letter-spacing: 0.03em;
+    line-height: 1;
+    margin-top: -8px;
+    color: var(--ink);
+    opacity: 0.85;
+  }
+
+  /* CLOSED — second most important info */
+  .plaque__closed {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .plaque__closedEN {
+    font-family: var(--font-display-en);
+    text-transform: uppercase;
+    font-size: 36px;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .plaque__closedTH {
+    font-family: var(--font-display-th);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    font-size: 32px;
+    line-height: 1.05;
+    color: var(--ink);
+    opacity: 0.9;
+  }
+
+  /* PHONE — tertiary */
+  .plaque__phone {
+    font-family: var(--font-display-en);
+    font-size: 36px;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    color: var(--ink);
+  }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="opening-hours-v2.jsx"></script>
+</body>
+</html>

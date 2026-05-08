@@ -1,0 +1,212 @@
+/* ============================================================
+   SAHA Steak & Butcher — Core Design Tokens
+   ============================================================
+   Heritage-Western butcher & steakhouse. Cream parchment,
+   deep crimson, jet black. Tight, carved, confident.
+   ============================================================ */
+
+/* --- Fonts --------------------------------------------------- */
+
+@font-face {
+  font-family: "Chreed";
+  src: url("fonts/Chreed-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Tannakone";
+  src: url("fonts/tannakone-light-condensed.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("fonts/BebasNeue-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- Color tokens (base) ------------------------------------- */
+
+:root {
+  color-scheme: light;
+
+  /* Brand core */
+  --saha-cream:    #F5F0C8;   /* primary background (parchment) */
+  --saha-crimson:  #8B2020;   /* text fill & accent */
+  --saha-black:    #1A1A1A;   /* logo, outlines, deep detail */
+  --saha-white:    #FFFFFF;   /* contrast detail, selection */
+
+  /* Derived, on-brand tints (use sparingly) */
+  --saha-cream-deep:  #ECE4B0;  /* subtle band / hover fill on cream */
+  --saha-cream-edge:  #D9CE8A;  /* cream border / divider on cream */
+  --saha-crimson-ink: #6A1818;  /* pressed state, deepened crimson */
+  --saha-crimson-hi:  #A33434;  /* hover on crimson surface */
+  --saha-ink-soft:    #3A2E25;  /* warm black for body text on cream */
+
+  /* Semantic foreground / background */
+  --fg-1: var(--saha-crimson);      /* primary text on cream */
+  --fg-2: var(--saha-ink-soft);     /* body text on cream */
+  --fg-inv: var(--saha-cream);      /* text on crimson / black */
+  --bg-1: var(--saha-cream);        /* default surface */
+  --bg-2: var(--saha-cream-deep);   /* subtle variant */
+  --bg-ink: var(--saha-black);      /* dark surface */
+  --bg-accent: var(--saha-crimson); /* accent surface */
+
+  --border: var(--saha-crimson);
+  --border-soft: var(--saha-cream-edge);
+  --rule: var(--saha-black);
+
+  /* Type families */
+  --font-display-en: "Chreed", "Playfair Display", serif;          /* English headlines (heritage serif) */
+  --font-display-th: "Tannakone", "Noto Sans Thai", sans-serif;          /* Thai headlines / body */
+  --font-support:    "Bebas Neue", "Oswald", sans-serif;          /* condensed supporting */
+  --font-body:       "Bebas Neue", "Oswald", sans-serif;          /* body (tall condensed) */
+
+  /* Letter-spacing (Chreed runs tight, -0.50 text-gap equiv.) */
+  --track-display: -0.01em;
+  --track-support: 0.06em;
+  --track-body:    0.04em;
+
+  /* Scale — large & confident; nothing thin */
+  --fs-display:  clamp(64px, 8vw, 128px);
+  --fs-h1:       clamp(44px, 5vw, 72px);
+  --fs-h2:       clamp(32px, 3.4vw, 48px);
+  --fs-h3:       clamp(22px, 2vw, 28px);
+  --fs-body:     18px;
+  --fs-small:    14px;
+
+  /* Spacing — 4pt grid */
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  24px;
+  --s-6:  32px;
+  --s-7:  48px;
+  --s-8:  64px;
+  --s-9:  96px;
+
+  /* Radii — generally square; slight softening only */
+  --r-0: 0px;
+  --r-1: 2px;
+  --r-2: 4px;
+  --r-pill: 999px;
+
+  /* Borders */
+  --bw-hair:  1px;
+  --bw-rule:  2px;
+  --bw-heavy: 4px;
+  --bw-stamp: 6px;
+
+  /* Shadows — carved, not airy. Hard stamp offsets, no blur. */
+  --sh-stamp:       4px 4px 0 var(--saha-black);
+  --sh-stamp-sm:    2px 2px 0 var(--saha-black);
+  --sh-stamp-red:   4px 4px 0 var(--saha-crimson);
+  --sh-press:       inset 0 2px 0 rgba(0,0,0,0.25);
+
+  /* Motion — minimal, firm */
+  --ease-firm: cubic-bezier(.2,.7,.2,1);
+  --dur-fast:  120ms;
+  --dur:       200ms;
+}
+
+/* --- Semantic typography roles ------------------------------- */
+
+html, body {
+  background: var(--bg-1);
+  color: var(--fg-1);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  letter-spacing: var(--track-body);
+  line-height: 1.35;
+}
+
+.saha-display,
+h1.display {
+  font-family: var(--font-display-en);
+  font-size: var(--fs-display);
+  letter-spacing: var(--track-display);
+  line-height: 0.9;
+  color: var(--fg-1);
+  text-transform: uppercase;
+}
+
+h1, .saha-h1 {
+  font-family: var(--font-display-en);
+  font-size: var(--fs-h1);
+  letter-spacing: var(--track-display);
+  line-height: 0.95;
+  color: var(--fg-1);
+  text-transform: uppercase;
+}
+
+h2, .saha-h2 {
+  font-family: var(--font-display-en);
+  font-size: var(--fs-h2);
+  letter-spacing: 0em;
+  line-height: 1.0;
+  color: var(--fg-1);
+  text-transform: uppercase;
+}
+
+h3, .saha-h3,
+.saha-eyebrow {
+  font-family: var(--font-support);
+  font-size: var(--fs-h3);
+  letter-spacing: var(--track-support);
+  line-height: 1.1;
+  color: var(--fg-1);
+  text-transform: uppercase;
+}
+
+.saha-thai-headline {
+  font-family: var(--font-display-th);
+  font-size: var(--fs-h1);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--fg-1);
+  font-weight: 300;
+}
+
+.saha-thai-body {
+  font-family: var(--font-display-th);
+  font-size: 20px;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  color: var(--fg-1);
+  font-weight: 300;
+}
+
+p, .saha-body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  letter-spacing: var(--track-body);
+  line-height: 1.5;
+  color: var(--fg-2);
+}
+
+.saha-small,
+small {
+  font-family: var(--font-support);
+  font-size: var(--fs-small);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+/* --- Utility: textile border frame --------------------------- */
+
+.saha-frame {
+  background-image: url("assets/saha-bg.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/* Selection — cream highlight on crimson */
+::selection { background: var(--saha-crimson-hi); color: var(--saha-cream); }

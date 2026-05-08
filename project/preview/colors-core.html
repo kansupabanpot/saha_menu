@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light">
+<title>SAHA — Brand Colors</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body {
+    margin: 0;
+    padding: 20px;
+    background: var(--saha-cream);
+    font-family: var(--font-support);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .swatch {
+    aspect-ratio: 1.6 / 1;
+    border: 2px solid var(--saha-crimson);
+    box-shadow: 4px 4px 0 var(--saha-crimson);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .swatch .name { font-size: 15px; line-height: 1; }
+  .swatch .hex  { font-size: 11px; opacity: 0.85; margin-top: 4px; }
+  .swatch .role {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    margin-top: 8px;
+    opacity: 0.75;
+  }
+
+  /* Cream surface — primary text crimson, secondary text black */
+  .cream {
+    background: var(--saha-cream);
+    color: var(--saha-crimson);
+  }
+  .cream .role { color: var(--saha-black); opacity: 0.85; }
+
+  /* Crimson surface — text is cream */
+  .crimson {
+    background: var(--saha-crimson);
+    color: var(--saha-cream);
+    border-color: var(--saha-crimson);
+    box-shadow: 4px 4px 0 var(--saha-black);
+  }
+
+  /* Black is ink, not a surface — show it as a type sample on cream */
+  .black-ink {
+    background: var(--saha-cream);
+    color: var(--saha-black);
+  }
+  .black-ink .name {
+    font-family: var(--font-display-en);
+    font-size: 32px;
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+  }
+  .black-ink .role { color: var(--saha-crimson); opacity: 1; }
+
+  /* Light Maroon — for dark surfaces that need lift, paired with cream text */
+  .maroon-light {
+    background: #A33434;
+    color: var(--saha-cream);
+    border-color: var(--saha-crimson);
+    box-shadow: 4px 4px 0 var(--saha-crimson-ink);
+  }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="swatch cream">
+      <div class="name">Cream / Parchment</div>
+      <div class="hex">#F5F0C8</div>
+      <div class="role">Primary surface</div>
+    </div>
+    <div class="swatch crimson">
+      <div class="name">Deep Crimson</div>
+      <div class="hex">#8B2020</div>
+      <div class="role">Text · Accent · Rules</div>
+    </div>
+    <div class="swatch black-ink">
+      <div class="name">Aa</div>
+      <div class="hex">Jet Black · #1A1A1A</div>
+      <div class="role">Secondary text · Logo · Outlines</div>
+    </div>
+    <div class="swatch maroon-light">
+      <div class="name">Light Maroon</div>
+      <div class="hex">#A33434</div>
+      <div class="role">Dark surface accent · use with cream text</div>
+    </div>
+  </div>
+</body>
+</html>

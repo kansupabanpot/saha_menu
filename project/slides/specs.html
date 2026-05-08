@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SAHA — Specs Slide</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; }
+  .slide {
+    width: 1280px; height: 720px;
+    background: var(--saha-cream);
+    padding: 70px 90px;
+    box-sizing: border-box;
+    color: var(--saha-crimson);
+    display: flex;
+    flex-direction: column;
+  }
+  .header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 4px solid var(--saha-crimson);
+    padding-bottom: 18px;
+    margin-bottom: 36px;
+  }
+  .eyebrow {
+    font-family: var(--font-support);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 16px;
+  }
+  .h1 {
+    font-family: var(--font-display-en);
+    text-transform: uppercase;
+    font-size: 64px;
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; flex: 1; }
+  .stat {
+    border: 2px solid var(--saha-crimson);
+    background: var(--saha-cream-deep);
+    box-shadow: 6px 6px 0 var(--saha-black);
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .num {
+    font-family: var(--font-display-en);
+    font-size: 110px;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+  }
+  .unit {
+    font-family: var(--font-support);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 14px;
+    color: var(--saha-ink-soft);
+    margin-top: 12px;
+  }
+  .label {
+    font-family: var(--font-display-en);
+    text-transform: uppercase;
+    font-size: 26px;
+    letter-spacing: 0;
+    line-height: 1;
+    margin-top: 18px;
+  }
+  .label .th {
+    display: block;
+    font-family: var(--font-display-th);
+    font-size: 16px;
+    font-weight: normal;
+    letter-spacing: -0.02em;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="header">
+      <div class="h1">By the Numbers</div>
+      <div class="eyebrow">2024 · Bangkok</div>
+    </div>
+    <div class="grid">
+      <div class="stat">
+        <div class="num">45</div>
+        <div>
+          <div class="unit">Days</div>
+          <div class="label">Dry-Aged<span class="th">บ่มแห้ง</span></div>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="num">12</div>
+        <div>
+          <div class="unit">Cuts</div>
+          <div class="label">On the Board<span class="th">บนกระดาน</span></div>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="num">1°</div>
+        <div>
+          <div class="unit">Celsius</div>
+          <div class="label">Aging Room<span class="th">ห้องบ่ม</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

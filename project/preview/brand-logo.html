@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light">
+<title>SAHA — Logo Lockups</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body {
+    margin: 0;
+    padding: 20px;
+    background: var(--saha-cream);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch;
+    gap: 14px;
+  }
+  .cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 22px 14px;
+    border: 2px solid var(--saha-crimson-ink);
+    aspect-ratio: 1 / 1;
+  }
+  img {
+    width: 130px;
+    height: auto;
+    display: block;
+  }
+  .lbl {
+    font-family: var(--font-support);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 10px;
+    line-height: 1.2;
+    text-align: center;
+  }
+  .hex {
+    display: block;
+    margin-top: 3px;
+    opacity: 0.7;
+    font-family: ui-monospace, monospace;
+    letter-spacing: 0.08em;
+    font-size: 9px;
+  }
+
+  /* Cream / parchment — primary surface */
+  .cream {
+    background: var(--saha-cream);
+  }
+  .cream .lbl { color: var(--saha-crimson-ink); }
+
+  /* Light sand — replaces black; warm beige neutral */
+  .sand {
+    background: #E8DCB0;
+    border-color: #B89A4A;
+  }
+  .sand .lbl { color: var(--saha-crimson-ink); }
+
+  /* Burgundy — deepened crimson, replaces black as the dark surface */
+  .burgundy {
+    background: #5C1A1A;
+    border-color: #5C1A1A;
+  }
+  .burgundy .lbl { color: var(--saha-cream); }
+</style>
+</head>
+<body>
+  <div class="cell cream">
+    <img src="../assets/saha-logo.png" alt="SAHA logo on cream">
+    <div class="lbl">On Cream<span class="hex">#F5F0C8</span></div>
+  </div>
+  <div class="cell sand">
+    <img src="../assets/saha-logo.png" alt="SAHA logo on sand">
+    <div class="lbl">On Sand<span class="hex">#E8DCB0</span></div>
+  </div>
+  <div class="cell burgundy">
+    <img src="../assets/saha-logo.png" alt="SAHA logo on burgundy">
+    <div class="lbl">On Burgundy<span class="hex">#5C1A1A</span></div>
+  </div>
+</body>
+</html>
