@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>SAHA Steak &amp; Butcher</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; min-height: 100vh; background: var(--saha-cream); }
+
+  .hub {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ──────────────────────────────── */
+  .hub-header {
+    background-image: url("assets/saha-bg-square.png");
+    background-size: 100% 100%;
+    padding: 56px 48px;
+    text-align: center;
+    border-bottom: 2px solid var(--saha-crimson);
+  }
+  .hub-logo {
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+    margin-bottom: 20px;
+  }
+  .hub-title {
+    font-family: var(--font-display-en);
+    font-size: clamp(56px, 12vw, 120px);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 0.85;
+    color: var(--saha-crimson);
+    margin: 0;
+  }
+  .hub-sub {
+    font-family: var(--font-support);
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--saha-ink-soft);
+    margin-top: 14px;
+  }
+  .hub-th {
+    font-family: var(--font-display-th);
+    font-size: clamp(20px, 3.5vw, 32px);
+    letter-spacing: -0.02em;
+    color: var(--saha-crimson);
+    font-weight: 300;
+    opacity: 0.85;
+    margin-top: 10px;
+  }
+
+  /* ── MAIN GRID ───────────────────────────── */
+  .hub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 0;
+    border-top: 2px solid var(--saha-crimson);
+  }
+
+  .hub-tile {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 36px;
+    border-right: 2px solid var(--saha-crimson);
+    border-bottom: 2px solid var(--saha-crimson);
+    text-decoration: none;
+    background: var(--saha-cream);
+    transition: background 120ms var(--ease-firm);
+    position: relative;
+  }
+  .hub-tile:hover { background: var(--saha-cream-deep); }
+  .hub-tile.featured {
+    background: var(--saha-crimson);
+  }
+  .hub-tile.featured:hover { background: var(--saha-crimson-hi); }
+
+  .tile-number {
+    font-family: var(--font-display-en);
+    font-size: 64px;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    color: var(--saha-cream-edge);
+    margin-bottom: 20px;
+    user-select: none;
+  }
+  .hub-tile.featured .tile-number { color: rgba(245,240,200,0.2); }
+
+  .tile-title {
+    font-family: var(--font-display-en);
+    font-size: 36px;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 0.9;
+    color: var(--saha-crimson);
+    margin: 0 0 6px;
+  }
+  .hub-tile.featured .tile-title { color: var(--saha-cream); }
+
+  .tile-th {
+    font-family: var(--font-display-th);
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    color: var(--saha-crimson);
+    font-weight: 300;
+    opacity: 0.8;
+    margin-bottom: 14px;
+  }
+  .hub-tile.featured .tile-th { color: var(--saha-cream); opacity: 0.75; }
+
+  .tile-desc {
+    font-family: var(--font-support);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--saha-ink-soft);
+    line-height: 1.6;
+    flex: 1;
+  }
+  .hub-tile.featured .tile-desc { color: rgba(245,240,200,0.7); }
+
+  .tile-arrow {
+    font-family: var(--font-display-en);
+    font-size: 28px;
+    color: var(--saha-crimson);
+    margin-top: 20px;
+    line-height: 1;
+  }
+  .hub-tile.featured .tile-arrow { color: var(--saha-cream); }
+
+  /* ── FOOTER ──────────────────────────────── */
+  .hub-footer {
+    border-top: 2px solid var(--saha-crimson);
+    padding: 20px 40px;
+    background: var(--saha-cream-deep);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .hub-footer__info {
+    font-family: var(--font-support);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--saha-ink-soft);
+    line-height: 1.6;
+  }
+  .hub-footer__hours {
+    font-family: var(--font-display-en);
+    font-size: 22px;
+    letter-spacing: 0;
+    color: var(--saha-crimson);
+  }
+  .hub-footer__th {
+    font-family: var(--font-display-th);
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    color: var(--saha-ink-soft);
+    font-weight: 300;
+  }
+</style>
+</head>
+<body>
+<div class="hub">
+
+  <header class="hub-header">
+    <img src="assets/saha-logo.png" alt="SAHA emblem" class="hub-logo">
+    <h1 class="hub-title">SAHA</h1>
+    <div class="hub-sub">Steak &amp; Butcher · Bangkok</div>
+    <div class="hub-th">เนื้อคัดพิเศษ · ย่างด้วยถ่าน</div>
+  </header>
+
+  <nav class="hub-grid">
+
+    <a href="digital-menu.html" class="hub-tile featured">
+      <div class="tile-number">01</div>
+      <div class="tile-title">Menu &amp; Order</div>
+      <div class="tile-th">สั่งอาหาร</div>
+      <div class="tile-desc">
+        Browse signature cuts, starters, sides, sauces &amp; drinks.
+        Add to your order and send to the kitchen.
+      </div>
+      <div class="tile-arrow">→</div>
+    </a>
+
+    <a href="home.html" class="hub-tile">
+      <div class="tile-number">02</div>
+      <div class="tile-title">Restaurant</div>
+      <div class="tile-th">ร้านอาหาร</div>
+      <div class="tile-desc">
+        Brand landing page — featured cuts, opening hours,
+        contact, and restaurant story.
+      </div>
+      <div class="tile-arrow">→</div>
+    </a>
+
+    <a href="slides/opening-hours-v2.html" class="hub-tile">
+      <div class="tile-number">03</div>
+      <div class="tile-title">Door Sign</div>
+      <div class="tile-th">ป้ายหน้าร้าน</div>
+      <div class="tile-desc">
+        Production door plaque — landscape 2:1, single-ink.
+        Tweakable ink color, hours, phone, and closed day.
+      </div>
+      <div class="tile-arrow">→</div>
+    </a>
+
+    <a href="slides/opening-hours.html" class="hub-tile">
+      <div class="tile-number">04</div>
+      <div class="tile-title">Sign · Full Controls</div>
+      <div class="tile-th">ป้ายพร้อมตัวเลือก</div>
+      <div class="tile-desc">
+        Opening hours sign with surface, format, language,
+        and status tweaks — Open/Closed flip included.
+      </div>
+      <div class="tile-arrow">→</div>
+    </a>
+
+    <a href="preview/index.html" class="hub-tile">
+      <div class="tile-number">05</div>
+      <div class="tile-title">Design System</div>
+      <div class="tile-th">คู่มือการออกแบบ</div>
+      <div class="tile-desc">
+        All brand cards — colors, type, components, foundations,
+        and slide templates. 24 preview cards total.
+      </div>
+      <div class="tile-arrow">→</div>
+    </a>
+
+    <a href="slides/index.html" class="hub-tile">
+      <div class="tile-number">06</div>
+      <div class="tile-title">Slide Templates</div>
+      <div class="tile-th">แม่แบบสไลด์</div>
+      <div class="tile-desc">
+        Title, section, menu, quote, and specs slides —
+        ready to copy for presentations.
+      </div>
+      <div class="tile-arrow">→</div>
+    </a>
+
+  </nav>
+
+  <footer class="hub-footer">
+    <div>
+      <div class="hub-footer__hours">11.00 – 22.00</div>
+      <div class="hub-footer__th">หยุดทุกวันอังคาร · Last order 21.30</div>
+    </div>
+    <div class="hub-footer__info">
+      SAHA Steak &amp; Butcher · Bangkok<br>
+      Tel · 084 279 0999
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

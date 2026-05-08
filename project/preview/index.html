@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>SAHA — Design System</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--saha-cream); }
+
+  .ds-header {
+    background-image: url("../assets/saha-bg-square.png");
+    background-size: 100% 100%;
+    padding: 48px 40px 40px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    border-bottom: 2px solid var(--saha-crimson);
+    flex-wrap: wrap;
+  }
+  .ds-header__brand {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .ds-header__logo {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+  }
+  .ds-header__title {
+    font-family: var(--font-display-en);
+    font-size: 56px;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 0.9;
+    color: var(--saha-crimson);
+    margin: 0;
+  }
+  .ds-header__sub {
+    font-family: var(--font-support);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--saha-ink-soft);
+    margin-top: 4px;
+  }
+  .ds-header__links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .ds-header__link {
+    font-family: var(--font-support);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 8px 16px;
+    color: var(--saha-crimson);
+    border: 2px solid var(--saha-crimson);
+    box-shadow: 3px 3px 0 var(--saha-crimson);
+    transition: background 120ms;
+  }
+  .ds-header__link:hover { background: var(--saha-cream-deep); }
+  .ds-header__link.primary {
+    background: var(--saha-crimson);
+    color: var(--saha-cream);
+    box-shadow: 3px 3px 0 var(--saha-black);
+  }
+  .ds-header__link.primary:hover { background: var(--saha-crimson-hi); }
+
+  .ds-body { padding: 40px; }
+
+  .ds-section { margin-bottom: 48px; }
+  .ds-section__label {
+    font-family: var(--font-support);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--saha-ink-soft);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--saha-cream-edge);
+  }
+  .ds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .card-link {
+    display: block;
+    text-decoration: none;
+    border: 2px solid var(--saha-crimson);
+    box-shadow: 4px 4px 0 var(--saha-black);
+    overflow: hidden;
+    transition: box-shadow 120ms var(--ease-firm), transform 120ms;
+    background: var(--saha-cream-deep);
+  }
+  .card-link:hover { box-shadow: 6px 6px 0 var(--saha-black); transform: translate(-1px,-1px); }
+  .card-link:active { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--saha-black); }
+
+  .card-preview {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+    pointer-events: none;
+    display: block;
+    transform-origin: top left;
+    /* Scale iframe content to fit the 16:9 preview box */
+  }
+  .card-preview-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    position: relative;
+    background: var(--saha-cream);
+  }
+  .card-preview-wrap iframe {
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: top left;
+    pointer-events: none;
+    border: none;
+  }
+  .card-meta {
+    padding: 9px 14px;
+    border-top: 2px solid var(--saha-crimson);
+    background: var(--saha-cream);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .card-meta__name {
+    font-family: var(--font-support);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--saha-crimson);
+  }
+  .card-meta__tag {
+    font-family: var(--font-support);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--saha-ink-soft);
+    background: var(--saha-cream-deep);
+    padding: 2px 6px;
+    border: 1px solid var(--saha-cream-edge);
+  }
+</style>
+</head>
+<body>
+
+<header class="ds-header">
+  <div class="ds-header__brand">
+    <img src="../assets/saha-logo.png" alt="SAHA" class="ds-header__logo">
+    <div>
+      <h1 class="ds-header__title">Design System</h1>
+      <div class="ds-header__sub">SAHA Steak &amp; Butcher · Brand &amp; Components</div>
+    </div>
+  </div>
+  <div class="ds-header__links">
+    <a href="../home.html" class="ds-header__link">← Site Home</a>
+    <a href="../digital-menu.html" class="ds-header__link primary">Menu &amp; Order</a>
+  </div>
+</header>
+
+<div class="ds-body">
+
+  <!-- BRAND -->
+  <div class="ds-section">
+    <div class="ds-section__label">Brand Identity</div>
+    <div class="ds-grid">
+      <a href="brand-logo.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="brand-logo.html" title="Logo Lockups"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Logo Lockups</span><span class="card-meta__tag">Brand</span></div>
+      </a>
+      <a href="brand-frame.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="brand-frame.html" title="Brand Frame"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Brand Frame</span><span class="card-meta__tag">Brand</span></div>
+      </a>
+      <a href="voice-tone.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="voice-tone.html" title="Voice & Tone"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Voice &amp; Tone</span><span class="card-meta__tag">Brand</span></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- COLOR -->
+  <div class="ds-section">
+    <div class="ds-section__label">Color</div>
+    <div class="ds-grid">
+      <a href="colors-core.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="colors-core.html" title="Core Palette"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Core Palette</span><span class="card-meta__tag">Color</span></div>
+      </a>
+      <a href="colors-derived.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="colors-derived.html" title="Derived Tints"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Derived Tints</span><span class="card-meta__tag">Color</span></div>
+      </a>
+      <a href="colors-semantic.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="colors-semantic.html" title="Semantic Roles"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Semantic Roles</span><span class="card-meta__tag">Color</span></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- TYPOGRAPHY -->
+  <div class="ds-section">
+    <div class="ds-section__label">Typography</div>
+    <div class="ds-grid">
+      <a href="type-chreed.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="type-chreed.html" title="Chreed Bold"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Chreed Bold</span><span class="card-meta__tag">Type · EN Display</span></div>
+      </a>
+      <a href="type-tannakone.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="type-tannakone.html" title="Tannakone"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Tannakone</span><span class="card-meta__tag">Type · TH</span></div>
+      </a>
+      <a href="type-bebas.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="type-bebas.html" title="Bebas Neue"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Bebas Neue</span><span class="card-meta__tag">Type · Support</span></div>
+      </a>
+      <a href="type-scale.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="type-scale.html" title="Type Scale"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Type Scale</span><span class="card-meta__tag">Type</span></div>
+      </a>
+      <a href="type-bilingual.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="type-bilingual.html" title="Bilingual Pairing"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Bilingual Pairing</span><span class="card-meta__tag">Type · EN+TH</span></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- COMPONENTS -->
+  <div class="ds-section">
+    <div class="ds-section__label">Components</div>
+    <div class="ds-grid">
+      <a href="components-buttons.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="components-buttons.html" title="Buttons"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Buttons</span><span class="card-meta__tag">Component</span></div>
+      </a>
+      <a href="components-cards.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="components-cards.html" title="Cards"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Cards</span><span class="card-meta__tag">Component</span></div>
+      </a>
+      <a href="components-badges.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="components-badges.html" title="Badges & Tags"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Badges &amp; Price Tags</span><span class="card-meta__tag">Component</span></div>
+      </a>
+      <a href="components-forms.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="components-forms.html" title="Forms"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Forms</span><span class="card-meta__tag">Component</span></div>
+      </a>
+      <a href="icons.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="icons.html" title="Icons"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Icons</span><span class="card-meta__tag">Component</span></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- FOUNDATIONS -->
+  <div class="ds-section">
+    <div class="ds-section__label">Foundations</div>
+    <div class="ds-grid">
+      <a href="shadows.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="shadows.html" title="Shadows"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Shadows</span><span class="card-meta__tag">Foundation</span></div>
+      </a>
+      <a href="radii-borders.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="radii-borders.html" title="Radii & Borders"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Radii &amp; Borders</span><span class="card-meta__tag">Foundation</span></div>
+      </a>
+      <a href="spacing-scale.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="spacing-scale.html" title="Spacing Scale"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Spacing Scale</span><span class="card-meta__tag">Foundation</span></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- SLIDES -->
+  <div class="ds-section">
+    <div class="ds-section__label">Slide Templates &amp; Signs</div>
+    <div class="ds-grid">
+      <a href="../slides/title.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="../slides/title.html" title="Title Slide"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Title Slide</span><span class="card-meta__tag">Slide</span></div>
+      </a>
+      <a href="../slides/menu.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="../slides/menu.html" title="Menu Slide"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Menu Slide</span><span class="card-meta__tag">Slide</span></div>
+      </a>
+      <a href="../slides/section.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="../slides/section.html" title="Section Slide"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Section · Crimson</span><span class="card-meta__tag">Slide</span></div>
+      </a>
+      <a href="../slides/quote.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="../slides/quote.html" title="Quote Slide"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Big Quote</span><span class="card-meta__tag">Slide</span></div>
+      </a>
+      <a href="../slides/specs.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="../slides/specs.html" title="Specs Slide"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Specs</span><span class="card-meta__tag">Slide</span></div>
+      </a>
+      <a href="../slides/opening-hours-v2.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="../slides/opening-hours-v2.html" title="Door Sign V2"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Door Sign · Production</span><span class="card-meta__tag">Sign</span></div>
+      </a>
+      <a href="../slides/opening-hours.html" class="card-link">
+        <div class="card-preview-wrap"><iframe src="../slides/opening-hours.html" title="Door Sign V1"></iframe></div>
+        <div class="card-meta"><span class="card-meta__name">Door Sign · Full Controls</span><span class="card-meta__tag">Sign</span></div>
+      </a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
