@@ -1,0 +1,1568 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>SAHA Steak &amp; Butcher — Menu</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; padding: 0; background: var(--saha-cream); color: var(--saha-crimson); }
+
+/* ── PRINT ──────────────────────────────────── */
+@page { size: A4 portrait; margin: 12mm 14mm; }
+@media print {
+  body { background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .no-print { display: none !important; }
+  .page-break { page-break-before: always; break-before: page; }
+  .avoid-break { page-break-inside: avoid; break-inside: avoid; }
+  .section-band { break-inside: avoid; }
+  .cover { min-height: auto; height: 120mm; page-break-after: always; break-after: page; }
+}
+
+/* ── NAV (screen only) ──────────────────────── */
+.sticky-nav {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--saha-cream);
+  border-bottom: 2px solid var(--saha-crimson);
+  overflow-x: auto; scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.sticky-nav::-webkit-scrollbar { display: none; }
+.nav-inner { display: flex; white-space: nowrap; padding: 0 20px; gap: 0; }
+.nav-a {
+  font-family: var(--font-support);
+  text-transform: uppercase; letter-spacing: 0.16em; font-size: 11px;
+  padding: 11px 15px; color: var(--saha-ink-soft);
+  text-decoration: none; display: inline-block;
+  border-bottom: 3px solid transparent;
+  transition: color 120ms var(--ease-firm), border-color 120ms;
+}
+.nav-a:hover { color: var(--saha-crimson); border-bottom-color: var(--saha-crimson); }
+
+/* ── COVER ──────────────────────────────────── */
+.cover {
+  background-image: url("assets/saha-bg-square.png");
+  background-size: cover; background-position: center;
+  min-height: 55vw;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-end;
+  text-align: center; padding: 48px 40px 60px;
+  border-bottom: 3px solid var(--saha-crimson);
+}
+.cover-logo {
+  width: 76px; height: 76px; object-fit: contain;
+  margin-bottom: 18px;
+}
+.cover-title {
+  font-family: var(--font-display-en);
+  font-size: clamp(80px, 20vw, 200px);
+  text-transform: uppercase; letter-spacing: -0.02em; line-height: 0.82;
+  color: var(--saha-crimson); margin: 0;
+}
+.cover-tagline {
+  font-family: var(--font-support);
+  font-size: clamp(10px, 1.8vw, 14px); letter-spacing: 0.38em;
+  text-transform: uppercase; color: var(--saha-ink-soft);
+  margin-top: 14px;
+}
+.cover-th {
+  font-family: var(--font-display-th);
+  font-size: clamp(18px, 3.5vw, 30px); letter-spacing: -0.02em;
+  color: var(--saha-crimson); font-weight: 300; opacity: 0.8;
+  margin-top: 6px;
+}
+
+/* ── SECTION BAND ───────────────────────────── */
+.section-band {
+  background: var(--saha-crimson);
+  border-top: 2px solid var(--saha-black);
+  border-bottom: 2px solid var(--saha-black);
+  padding: 20px 24px 18px;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+}
+@media (min-width: 600px) { .section-band { padding: 24px 40px 20px; } }
+.section-band__eyebrow {
+  font-family: var(--font-support); font-size: 9px;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: rgba(245,240,200,0.55); display: block; margin-bottom: 3px;
+}
+.section-band__title {
+  font-family: var(--font-display-en);
+  font-size: clamp(40px, 9vw, 80px);
+  text-transform: uppercase; letter-spacing: -0.02em; line-height: 0.85;
+  color: var(--saha-cream); margin: 0;
+}
+.section-band__right { text-align: right; }
+.section-band__th {
+  font-family: var(--font-display-th);
+  font-size: clamp(18px, 3.5vw, 30px); letter-spacing: -0.02em;
+  color: var(--saha-cream); font-weight: 300; opacity: 0.82;
+  line-height: 1.1;
+}
+.section-band__note {
+  font-family: var(--font-support); font-size: 9px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(245,240,200,0.5); margin-top: 4px; display: block;
+}
+
+/* ── CONTENT WRAPPER ────────────────────────── */
+.content {
+  padding: 32px 20px 56px;
+  max-width: 1100px; margin: 0 auto;
+}
+@media (min-width: 600px) { .content { padding: 40px 40px 64px; } }
+
+/* ── SUBSECTION HEAD ────────────────────────── */
+.sub-head {
+  display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  padding-bottom: 10px; border-bottom: 2px solid var(--saha-crimson);
+  margin-bottom: 16px;
+}
+.sub-head + .sub-head,
+.list-group + .sub-head,
+.items-grid + .sub-head,
+.cuts-grid + .sub-head,
+.sauce-grid + .sub-head { margin-top: 40px; }
+.sub-head__en {
+  font-family: var(--font-display-en);
+  font-size: 34px; text-transform: uppercase;
+  letter-spacing: -0.01em; line-height: 0.9;
+  color: var(--saha-crimson); margin: 0;
+}
+.sub-head__th {
+  font-family: var(--font-display-th);
+  font-size: 19px; letter-spacing: -0.02em;
+  color: var(--saha-crimson); font-weight: 300; opacity: 0.8;
+}
+
+/* ── PHOTO PLACEHOLDER ──────────────────────── */
+.photo-ph {
+  width: 100%; background: var(--saha-cream-deep);
+  border-bottom: 2px solid var(--saha-crimson);
+  position: relative; overflow: hidden; flex: none;
+}
+.photo-ph::before {
+  content: '';
+  position: absolute; inset: 10px;
+  border: 1.5px dashed var(--saha-cream-edge);
+  pointer-events: none;
+}
+
+/* ── CUT CARDS ──────────────────────────────── */
+.cuts-grid {
+  display: grid; gap: 2px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 480px) { .cuts-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 800px) { .cuts-grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+.cut-card {
+  background: var(--saha-cream); border: 2px solid var(--saha-crimson);
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.cut-card .photo-ph { aspect-ratio: 4 / 3; }
+.cut-body { padding: 14px 16px 20px; flex: 1; display: flex; flex-direction: column; }
+.cut-num {
+  font-family: var(--font-display-en);
+  font-size: 52px; line-height: 0.78;
+  letter-spacing: -0.02em; color: var(--saha-cream-edge);
+  margin-bottom: 8px; user-select: none;
+}
+.cut-name {
+  font-family: var(--font-display-en);
+  font-size: 34px; text-transform: uppercase;
+  letter-spacing: -0.01em; line-height: 0.88;
+  color: var(--saha-crimson); margin: 0 0 4px;
+}
+.cut-name-th {
+  font-family: var(--font-display-th);
+  font-size: 17px; letter-spacing: -0.02em;
+  color: var(--saha-crimson); font-weight: 300; opacity: 0.82;
+  margin-bottom: 9px;
+}
+.cut-desc {
+  font-family: var(--font-support); font-size: 10px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--saha-ink-soft); line-height: 1.55; flex: 1;
+  margin-bottom: 14px;
+}
+.by-weight {
+  display: inline-block;
+  font-family: var(--font-support); font-size: 9px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--saha-ink-soft);
+  border: 1px solid var(--saha-cream-edge);
+  background: var(--saha-cream-deep);
+  padding: 3px 10px;
+}
+
+/* ── ITEM CARDS (standard 4:3) ──────────────── */
+.items-grid {
+  display: grid; gap: 2px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 480px) { .items-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 800px) { .items-grid { grid-template-columns: 1fr 1fr 1fr; } }
+@media (min-width: 1060px) { .items-grid.four { grid-template-columns: 1fr 1fr 1fr 1fr; } }
+
+.item-card {
+  background: var(--saha-cream); border: 2px solid var(--saha-crimson);
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.item-card .photo-ph { aspect-ratio: 4 / 3; }
+.item-body { padding: 12px 14px 16px; flex: 1; display: flex; flex-direction: column; }
+.item-name {
+  font-family: var(--font-display-en);
+  font-size: 26px; text-transform: uppercase;
+  letter-spacing: -0.01em; line-height: 0.9;
+  color: var(--saha-crimson); margin: 0 0 3px;
+}
+.item-name-th {
+  font-family: var(--font-display-th);
+  font-size: 15px; letter-spacing: -0.02em;
+  color: var(--saha-crimson); font-weight: 300; opacity: 0.82;
+  margin-bottom: 7px;
+}
+.item-desc {
+  font-family: var(--font-support); font-size: 10px;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--saha-ink-soft); line-height: 1.5; flex: 1;
+  margin-bottom: 12px;
+}
+.item-foot { margin-top: auto; }
+
+/* Price tag component */
+.price-tag {
+  display: inline-flex; align-items: stretch;
+  border: 2px solid var(--saha-black);
+  box-shadow: 3px 3px 0 var(--saha-black);
+  font-family: var(--font-support);
+}
+.price-tag__k {
+  background: var(--saha-crimson); color: var(--saha-cream);
+  padding: 5px 10px; text-transform: uppercase;
+  letter-spacing: 0.1em; font-size: 10px;
+}
+.price-tag__v {
+  background: var(--saha-cream); color: var(--saha-crimson);
+  padding: 5px 12px; letter-spacing: 0.06em; font-size: 14px;
+}
+
+/* ── SAUCE GRID ─────────────────────────────── */
+.sauce-grid {
+  display: grid; gap: 2px;
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (min-width: 500px) { .sauce-grid { grid-template-columns: repeat(6, 1fr); } }
+.sauce-card {
+  background: var(--saha-cream); border: 2px solid var(--saha-crimson);
+  display: flex; flex-direction: column; overflow: hidden; text-align: center;
+}
+.sauce-card .photo-ph {
+  aspect-ratio: 1;
+  border-bottom: 1px solid var(--saha-crimson);
+}
+.sauce-card .photo-ph::before { inset: 8px; border-radius: 50%; }
+.sauce-body { padding: 8px 6px 12px; flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.sauce-name {
+  font-family: var(--font-display-en);
+  font-size: 13px; text-transform: uppercase;
+  letter-spacing: -0.01em; line-height: 1;
+  color: var(--saha-crimson); margin: 0;
+}
+.sauce-name-th {
+  font-family: var(--font-display-th);
+  font-size: 12px; color: var(--saha-crimson);
+  font-weight: 300; opacity: 0.8;
+}
+.sauce-price {
+  font-family: var(--font-support); font-size: 12px;
+  letter-spacing: 0.06em; color: var(--saha-crimson);
+  margin-top: 4px;
+}
+
+/* ── LIST FORMAT ────────────────────────────── */
+.list-group { margin-bottom: 32px; }
+.list-group:last-child { margin-bottom: 0; }
+.list-group__label {
+  font-family: var(--font-support); font-size: 9px;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--saha-ink-soft);
+  padding-bottom: 8px; border-bottom: 2px solid var(--saha-crimson);
+  margin-bottom: 0; display: block;
+}
+.list-row {
+  display: flex; align-items: baseline;
+  padding: 10px 0; gap: 10px;
+  border-bottom: 1px solid var(--saha-cream-edge);
+}
+.list-row:last-child { border-bottom: none; }
+.list-row__names { flex: 1; min-width: 0; }
+.list-row__en {
+  font-family: var(--font-display-en);
+  font-size: 22px; text-transform: uppercase;
+  letter-spacing: -0.01em; line-height: 0.9;
+  color: var(--saha-crimson); display: block;
+}
+.list-row__th {
+  font-family: var(--font-display-th);
+  font-size: 14px; letter-spacing: -0.02em;
+  color: var(--saha-crimson); font-weight: 300; opacity: 0.8;
+  display: block; margin-top: 2px;
+}
+.list-row__sub {
+  font-family: var(--font-support); font-size: 9px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--saha-ink-soft); display: block; margin-top: 2px;
+}
+.list-row__price {
+  font-family: var(--font-support); font-size: 16px;
+  letter-spacing: 0.04em; color: var(--saha-crimson);
+  white-space: nowrap; flex: none;
+}
+.list-row__price-sm {
+  font-family: var(--font-support); font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--saha-ink-soft); white-space: nowrap; flex: none;
+}
+
+.list-2col {
+  display: grid; gap: 0 40px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 580px) { .list-2col { grid-template-columns: 1fr 1fr; } }
+
+/* ── SPECIAL LARGE CARDS ────────────────────── */
+.special-grid {
+  display: grid; gap: 2px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 500px) { .special-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 860px) { .special-grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+.special-card {
+  background: var(--saha-cream); border: 2px solid var(--saha-crimson);
+  box-shadow: 4px 4px 0 var(--saha-black);
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.special-card .photo-ph { aspect-ratio: 16 / 9; }
+.special-body { padding: 18px 20px 24px; flex: 1; display: flex; flex-direction: column; }
+.special-label {
+  font-family: var(--font-support); font-size: 9px;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--saha-ink-soft); margin-bottom: 6px; display: block;
+}
+.special-name {
+  font-family: var(--font-display-en);
+  font-size: 32px; text-transform: uppercase;
+  letter-spacing: -0.01em; line-height: 0.88;
+  color: var(--saha-crimson); margin: 0 0 4px;
+}
+.special-name-th {
+  font-family: var(--font-display-th);
+  font-size: 20px; letter-spacing: -0.02em;
+  color: var(--saha-crimson); font-weight: 300; opacity: 0.82;
+  margin-bottom: 10px;
+}
+.special-desc {
+  font-family: var(--font-support); font-size: 10px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--saha-ink-soft); line-height: 1.6;
+  flex: 1; margin-bottom: 16px;
+}
+.special-note {
+  font-family: var(--font-support); font-size: 9px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--saha-ink-soft);
+  border: 1px solid var(--saha-cream-edge);
+  background: var(--saha-cream-deep);
+  padding: 4px 10px; display: inline-block; margin-top: 8px;
+}
+
+/* ── PASTA SECTION ──────────────────────────── */
+.pasta-intro {
+  font-family: var(--font-support); font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--saha-ink-soft);
+  border: 1px solid var(--saha-cream-edge);
+  background: var(--saha-cream-deep);
+  padding: 12px 16px; margin-bottom: 24px;
+  line-height: 1.6;
+}
+.pasta-intro strong {
+  font-family: var(--font-display-en); font-size: 20px;
+  font-weight: normal; letter-spacing: -0.01em;
+  color: var(--saha-crimson); vertical-align: middle;
+}
+.pasta-row {
+  display: flex; align-items: flex-start; flex-wrap: wrap;
+  padding: 12px 0; gap: 12px 20px;
+  border-bottom: 1px solid var(--saha-cream-edge);
+}
+.pasta-row:last-child { border-bottom: none; }
+.pasta-row__sauce {
+  font-family: var(--font-display-en);
+  font-size: 26px; text-transform: uppercase;
+  letter-spacing: -0.01em; line-height: 0.9;
+  color: var(--saha-crimson); min-width: 180px;
+}
+.pasta-row__opts {
+  font-family: var(--font-support); font-size: 10px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--saha-ink-soft); line-height: 2; flex: 1;
+  align-self: center;
+}
+.pasta-row__opts b {
+  font-weight: normal; color: var(--saha-crimson);
+  font-family: var(--font-support);
+}
+
+/* ── DRINKS ─────────────────────────────────── */
+.drinks-cols {
+  display: grid; gap: 0 48px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 680px) { .drinks-cols { grid-template-columns: 1fr 1fr; } }
+
+/* ── FOOTER ─────────────────────────────────── */
+.menu-footer {
+  background: var(--saha-crimson);
+  border-top: 3px solid var(--saha-black);
+  padding: 44px 24px 48px;
+  text-align: center; display: flex;
+  flex-direction: column; align-items: center; gap: 10px;
+}
+.menu-footer__logo {
+  width: 52px; height: 52px; object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(97%) sepia(10%) saturate(400%) hue-rotate(10deg) brightness(106%);
+  opacity: 0.7; margin-bottom: 4px;
+}
+.menu-footer__name {
+  font-family: var(--font-display-en);
+  font-size: 44px; text-transform: uppercase;
+  letter-spacing: -0.01em; line-height: 0.88;
+  color: var(--saha-cream);
+}
+.menu-footer__hours {
+  font-family: var(--font-display-en);
+  font-size: 28px; letter-spacing: -0.01em;
+  color: var(--saha-cream); opacity: 0.9;
+}
+.menu-footer__th {
+  font-family: var(--font-display-th);
+  font-size: 18px; color: var(--saha-cream);
+  font-weight: 300; opacity: 0.7;
+}
+.menu-footer__info {
+  font-family: var(--font-support); font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(245,240,200,0.6); line-height: 1.7;
+  margin-top: 6px;
+}
+
+/* ── BACK LINK ──────────────────────────────── */
+.back-link {
+  font-family: var(--font-support); font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--saha-ink-soft); text-decoration: none;
+  padding: 9px 16px; border: 2px solid var(--saha-crimson);
+  display: inline-block;
+  transition: background 120ms var(--ease-firm);
+}
+.back-link:hover { background: var(--saha-cream-deep); color: var(--saha-crimson); }
+</style>
+</head>
+<body>
+
+<!-- STICKY NAV (screen only) -->
+<nav class="sticky-nav no-print">
+  <div class="nav-inner">
+    <a class="nav-a" href="#cuts">Steaks</a>
+    <a class="nav-a" href="#specials">Specials</a>
+    <a class="nav-a" href="#non-beef">Non-Beef</a>
+    <a class="nav-a" href="#starters">Starters</a>
+    <a class="nav-a" href="#sides">Sides</a>
+    <a class="nav-a" href="#salads">Salads</a>
+    <a class="nav-a" href="#pasta">Pasta</a>
+    <a class="nav-a" href="#rice">Rice</a>
+    <a class="nav-a" href="#drinks">Drinks</a>
+    <a class="nav-a" href="index.html" style="margin-left:auto;border-left:1px solid var(--saha-cream-edge);padding-left:18px;">← Hub</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     COVER
+═══════════════════════════════════════════ -->
+<section class="cover">
+  <img src="assets/saha-logo.png" alt="SAHA" class="cover-logo">
+  <h1 class="cover-title">SAHA</h1>
+  <div class="cover-tagline">Steak &amp; Butcher · Bangkok</div>
+  <div class="cover-th">เนื้อคัดพิเศษ · ย่างด้วยถ่าน</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE 1 — SIGNATURE CUTS
+═══════════════════════════════════════════ -->
+<div id="cuts" class="page-break">
+  <div class="section-band avoid-break">
+    <div>
+      <span class="section-band__eyebrow">The Butcher's Board</span>
+      <h2 class="section-band__title">Signature Cuts</h2>
+    </div>
+    <div class="section-band__right">
+      <div class="section-band__th">เนื้อคัดพิเศษ</div>
+      <span class="section-band__note">All cuts priced by weight · ราคาตามน้ำหนัก</span>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="cuts-grid">
+
+      <div class="cut-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="cut-body">
+          <div class="cut-num">01</div>
+          <h3 class="cut-name">Tomahawk</h3>
+          <div class="cut-name-th">โทมาฮอว์ก</div>
+          <p class="cut-desc">Long-bone dry-aged ribeye · Spectacular centrepiece · Best shared between two</p>
+          <div class="by-weight">ราคาตามน้ำหนัก</div>
+        </div>
+      </div>
+
+      <div class="cut-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="cut-body">
+          <div class="cut-num">02</div>
+          <h3 class="cut-name">Rib Eye</h3>
+          <div class="cut-name-th">ริบ อาย</div>
+          <p class="cut-desc">Beautifully marbled cap muscle · Intense buttery flavour · Grass-fed</p>
+          <div class="by-weight">ราคาตามน้ำหนัก</div>
+        </div>
+      </div>
+
+      <div class="cut-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="cut-body">
+          <div class="cut-num">03</div>
+          <h3 class="cut-name">T-Bone</h3>
+          <div class="cut-name-th">ที-โบน</div>
+          <p class="cut-desc">Strip loin and tenderloin divided by the T-bone · The classic bistro cut</p>
+          <div class="by-weight">ราคาตามน้ำหนัก</div>
+        </div>
+      </div>
+
+      <div class="cut-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="cut-body">
+          <div class="cut-num">04</div>
+          <h3 class="cut-name">Porterhouse</h3>
+          <div class="cut-name-th">พอร์เตอร์เฮาส์</div>
+          <p class="cut-desc">A generous T-bone with a large tenderloin · The king of the grill</p>
+          <div class="by-weight">ราคาตามน้ำหนัก</div>
+        </div>
+      </div>
+
+      <div class="cut-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="cut-body">
+          <div class="cut-num">05</div>
+          <h3 class="cut-name">Sirloin</h3>
+          <div class="cut-name-th">สันนอก เซอร์ลอยน์</div>
+          <p class="cut-desc">Lean and firm with clean, bold beefy character · Satisfying and versatile</p>
+          <div class="by-weight">ราคาตามน้ำหนัก</div>
+        </div>
+      </div>
+
+      <div class="cut-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="cut-body">
+          <div class="cut-num">06</div>
+          <h3 class="cut-name">Tenderloin</h3>
+          <div class="cut-name-th">สันใน เทนเดอร์ลอยน์</div>
+          <p class="cut-desc">The most tender muscle · Lean, delicate and refined · Exceptionally soft</p>
+          <div class="by-weight">ราคาตามน้ำหนัก</div>
+        </div>
+      </div>
+
+      <div class="cut-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="cut-body">
+          <div class="cut-num">07</div>
+          <h3 class="cut-name">Picanha</h3>
+          <div class="cut-name-th">เนื้อสะโพกบน พิคานย่า</div>
+          <p class="cut-desc">Brazilian favourite · Fat cap intact for maximum flavour · Robust and juicy</p>
+          <div class="by-weight">ราคาตามน้ำหนัก</div>
+        </div>
+      </div>
+
+      <div class="cut-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="cut-body">
+          <div class="cut-num">08</div>
+          <h3 class="cut-name">Rump</h3>
+          <div class="cut-name-th">สันสะโพก รัมป์</div>
+          <p class="cut-desc">Full-flavoured hindquarter cut · Firm texture · Excellent depth of character</p>
+          <div class="by-weight">ราคาตามน้ำหนัก</div>
+        </div>
+      </div>
+
+      <div class="cut-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="cut-body">
+          <div class="cut-num">09</div>
+          <h3 class="cut-name">Flank</h3>
+          <div class="cut-name-th">เนื้อพื้นท้อง แฟลงค์ (Harami)</div>
+          <p class="cut-desc">Diaphragm muscle · Known as Harami in Japan · Rich and intensely flavoured</p>
+          <div class="by-weight">ราคาตามน้ำหนัก</div>
+        </div>
+      </div>
+
+      <div class="cut-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="cut-body">
+          <div class="cut-num">10</div>
+          <h3 class="cut-name">Skirt</h3>
+          <div class="cut-name-th">เนื้อพื้นท้องล่าง สเกิร์ต (Carne Asada)</div>
+          <p class="cut-desc">Long thin plate cut · Best over high heat · Deep, bold beefy flavour</p>
+          <div class="by-weight">ราคาตามน้ำหนัก</div>
+        </div>
+      </div>
+
+      <div class="cut-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="cut-body">
+          <div class="cut-num">11</div>
+          <h3 class="cut-name">Hanger's Steak</h3>
+          <div class="cut-name-th">เนื้อขั้วตับ แฮงเกอร์สเต๊ก</div>
+          <p class="cut-desc">The butcher's secret cut · Exceptional tenderness · Mineral depth and richness</p>
+          <div class="by-weight">ราคาตามน้ำหนัก</div>
+        </div>
+      </div>
+
+    </div><!-- /cuts-grid -->
+  </div><!-- /content -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGES 2–4 — SPECIALS
+═══════════════════════════════════════════ -->
+<div id="specials" class="page-break">
+  <div class="section-band avoid-break">
+    <div>
+      <span class="section-band__eyebrow">Chef's Selection</span>
+      <h2 class="section-band__title">Specials</h2>
+    </div>
+    <div class="section-band__right">
+      <div class="section-band__th">เมนูพิเศษ</div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="special-grid">
+
+      <div class="special-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="special-body">
+          <span class="special-label">Page 2 · Side</span>
+          <h3 class="special-name">I-Saan Condiments</h3>
+          <div class="special-name-th">ชุดผักแนมสไตล์อีสาน</div>
+          <p class="special-desc">ผักพื้นบ้านไทยรสจัดพร้อมน้ำจิ้มแจ่วทานคู่กับเนื้อแซ่บๆ<br>Fresh Thai herbs and vegetables with classic Jaew dipping sauce</p>
+          <div class="item-foot">
+            <div class="price-tag">
+              <div class="price-tag__k">I-Saan Set</div>
+              <div class="price-tag__v">฿75</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="special-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="special-body">
+          <span class="special-label">Page 3 · Set</span>
+          <h3 class="special-name">Japanese Rice &amp; Salad Set</h3>
+          <div class="special-name-th">ชุดข้าวญี่ปุ่นและสลัด</div>
+          <p class="special-desc">ชุดข้าวญี่ปุ่นพันธุ์โคชิฮิคาริ พร้อมสลัด ทานคู่กับเสต็กวากิวเข้ากันที่สุด<br>Koshihikari rice with salad · Perfect with Wagyu</p>
+          <div class="item-foot">
+            <div class="price-tag">
+              <div class="price-tag__k">Set</div>
+              <div class="price-tag__v">฿65</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="special-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="special-body">
+          <span class="special-label">Page 4 · Pre-Order</span>
+          <h3 class="special-name">Roast Beef &amp; Roast Prime Ribs</h3>
+          <div class="special-name-th">โรสต์บีฟ</div>
+          <p class="special-desc">เนื้ออบสไตล์คลาสสิก สำหรับหลายคนทาน<br>Classic slow-roasted beef for the table · Serves a group</p>
+          <div class="item-foot">
+            <div class="by-weight">ราคาตามน้ำหนัก</div>
+            <div class="special-note">Pre-order required · สั่งจองล่วงหน้าเท่านั้น</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE 5 — NON-BEEF STEAKS + SAUCES
+═══════════════════════════════════════════ -->
+<div id="non-beef" class="page-break">
+  <div class="section-band avoid-break">
+    <div>
+      <span class="section-band__eyebrow">From the Grill</span>
+      <h2 class="section-band__title">Non-Beef Steaks</h2>
+    </div>
+    <div class="section-band__right">
+      <div class="section-band__th">สเต็กชนิดอื่น</div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="items-grid four">
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Fire Red Sausage</h3>
+          <div class="item-name-th">ไส้กรอกหมูเผ็ด</div>
+          <p class="item-desc">Spicy grilled pork sausage · House recipe</p>
+          <div class="item-foot">
+            <div class="price-tag"><div class="price-tag__k">Price</div><div class="price-tag__v">฿90</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Classic Sausage</h3>
+          <div class="item-name-th">ไส้กรอกหมูคลาสสิก</div>
+          <p class="item-desc">Traditional grilled pork sausage</p>
+          <div class="item-foot">
+            <div class="price-tag"><div class="price-tag__k">Price</div><div class="price-tag__v">฿90</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Kurobuta Pork Chop</h3>
+          <div class="item-name-th">พอร์กช็อปสเต๊กหมูดำคุโรบูตะ</div>
+          <p class="item-desc">Premium Japanese black pork · Rich and tender</p>
+          <div class="item-foot"><div class="by-weight">ราคาตามน้ำหนัก</div></div>
+        </div>
+      </div>
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Australian Lamb Chop</h3>
+          <div class="item-name-th">เสต็กซี่โครงแกะออสเตรเลีย</div>
+          <p class="item-desc">Free-range Australian lamb · Herb-kissed</p>
+          <div class="item-foot"><div class="by-weight">ราคาตามน้ำหนัก</div></div>
+        </div>
+      </div>
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Salmon Steak</h3>
+          <div class="item-name-th">เสต็กปลาแซลมอน</div>
+          <p class="item-desc">Pan-seared salmon fillet · Butter basted</p>
+          <div class="item-foot">
+            <div class="price-tag"><div class="price-tag__k">Price</div><div class="price-tag__v">฿390</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Hamburg Steak</h3>
+          <div class="item-name-th">แฮมเบิร์กสเต๊ก</div>
+          <p class="item-desc">House-made beef patty · Demi-glace sauce</p>
+          <div class="item-foot">
+            <div class="price-tag"><div class="price-tag__k">Price</div><div class="price-tag__v">฿250</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Chicken Steak</h3>
+          <div class="item-name-th">เสต็กไก่</div>
+          <p class="item-desc">Grilled chicken breast · Herb marinade</p>
+          <div class="item-foot">
+            <div class="price-tag"><div class="price-tag__k">Price</div><div class="price-tag__v">฿195</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Fish and Chips</h3>
+          <div class="item-name-th">ฟิชแอนด์ชิปส์</div>
+          <p class="item-desc">Beer-battered fish · Crispy fries · Tartare sauce</p>
+          <div class="item-foot">
+            <div class="price-tag"><div class="price-tag__k">Price</div><div class="price-tag__v">฿195</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /items-grid -->
+
+    <!-- SAUCES -->
+    <div class="sub-head" style="margin-top:48px;">
+      <h3 class="sub-head__en">Sauces</h3>
+      <div class="sub-head__th">ซอส</div>
+    </div>
+    <div class="sauce-grid">
+
+      <div class="sauce-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="sauce-body">
+          <div class="sauce-name">Truffle</div>
+          <div class="sauce-name-th">ซอสทรัฟเฟิล</div>
+          <div class="sauce-price">฿65</div>
+        </div>
+      </div>
+
+      <div class="sauce-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="sauce-body">
+          <div class="sauce-name">Gravy</div>
+          <div class="sauce-name-th">ซอสเกรวี</div>
+          <div class="sauce-price">฿55</div>
+        </div>
+      </div>
+
+      <div class="sauce-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="sauce-body">
+          <div class="sauce-name">Red Wine</div>
+          <div class="sauce-name-th">ซอสไวน์แดง</div>
+          <div class="sauce-price">฿65</div>
+        </div>
+      </div>
+
+      <div class="sauce-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="sauce-body">
+          <div class="sauce-name">Peppercorn</div>
+          <div class="sauce-name-th">ซอสพริกไทยดำ</div>
+          <div class="sauce-price">฿40</div>
+        </div>
+      </div>
+
+      <div class="sauce-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="sauce-body">
+          <div class="sauce-name">Yakiniku</div>
+          <div class="sauce-name-th">ซอสยากินิกุ</div>
+          <div class="sauce-price">฿45</div>
+        </div>
+      </div>
+
+      <div class="sauce-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="sauce-body">
+          <div class="sauce-name">Jaew</div>
+          <div class="sauce-name-th">ซอสแจ่ว</div>
+          <div class="sauce-price">฿30</div>
+        </div>
+      </div>
+
+    </div><!-- /sauce-grid -->
+  </div><!-- /content -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE 6 — APPETIZERS / STARTERS
+═══════════════════════════════════════════ -->
+<div id="starters" class="page-break">
+  <div class="section-band avoid-break">
+    <div>
+      <span class="section-band__eyebrow">To Begin</span>
+      <h2 class="section-band__title">Appetizers</h2>
+    </div>
+    <div class="section-band__right">
+      <div class="section-band__th">ออเดิร์ฟ</div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="items-grid">
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Thai Poached Beef</h3>
+          <div class="item-name-th">เนื้อน่องลาย / สันคอ จิ้มแจ่ว</div>
+          <p class="item-desc">Slow-poached beef shank or chuck · Served with traditional Jaew sauce</p>
+          <div class="item-foot"><div class="by-weight">ราคาตามน้ำหนัก</div></div>
+        </div>
+      </div>
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Spicy Beef Salad</h3>
+          <div class="item-name-th">ยำเนื้อน่องลาย / สันคอสไลด์</div>
+          <p class="item-desc">Sliced beef shank or chuck · Spicy Thai-style dressing</p>
+          <div class="item-foot"><div class="by-weight">ราคาตามน้ำหนัก</div></div>
+        </div>
+      </div>
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Grilled Short Ribs</h3>
+          <div class="item-name-th">ซี่โครงเนื้อย่าง</div>
+          <p class="item-desc">Charcoal-grilled beef short ribs · Served with Yakiniku sauce</p>
+          <div class="item-foot"><div class="by-weight">ราคาตามน้ำหนัก</div></div>
+        </div>
+      </div>
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Calamari Rings</h3>
+          <div class="item-name-th">ปลาหมึกทอด คาลามารี</div>
+          <p class="item-desc">Crispy fried squid rings · House dipping sauce</p>
+          <div class="item-foot"></div>
+        </div>
+      </div>
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Fried Chicken Wings</h3>
+          <div class="item-name-th">ปีกกลางไก่ทอด</div>
+          <p class="item-desc">Crispy mid-joint wings · Seasoned to order</p>
+          <div class="item-foot">
+            <div class="price-tag"><div class="price-tag__k">Price</div><div class="price-tag__v">฿150</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Onion Rings</h3>
+          <div class="item-name-th">หัวหอมทอด</div>
+          <p class="item-desc">Beer-battered onion rings · Smoky chipotle dip</p>
+          <div class="item-foot">
+            <div class="price-tag"><div class="price-tag__k">Price</div><div class="price-tag__v">฿85</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Tasty Corn Ribs</h3>
+          <div class="item-name-th">ข้าวโพดปรุงรสทอด</div>
+          <p class="item-desc">Seasoned fried corn ribs · Crispy and addictive</p>
+          <div class="item-foot">
+            <div class="price-tag"><div class="price-tag__k">Price</div><div class="price-tag__v">฿85</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE 7 — SOUP & SIDES
+═══════════════════════════════════════════ -->
+<div id="sides" class="page-break">
+  <div class="section-band avoid-break">
+    <div>
+      <span class="section-band__eyebrow">Accompaniments</span>
+      <h2 class="section-band__title">Soup &amp; Sides</h2>
+    </div>
+    <div class="section-band__right">
+      <div class="section-band__th">ซุปและเครื่องเคียง</div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="list-2col">
+
+      <!-- LEFT COLUMN: SOUPS -->
+      <div>
+        <div class="list-group">
+          <span class="list-group__label">Soups · ซุป</span>
+          <div class="list-row avoid-break">
+            <div class="list-row__names">
+              <span class="list-row__en">Ox Tail Soup</span>
+              <span class="list-row__th">ซุปหางวัว</span>
+            </div>
+            <div class="list-row__price">฿250</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names">
+              <span class="list-row__en">Mushroom Soup</span>
+              <span class="list-row__th">ซุปเห็ด</span>
+            </div>
+            <div class="list-row__price">฿90</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names">
+              <span class="list-row__en">Pumpkin Soup</span>
+              <span class="list-row__th">ซุปฟักทอง</span>
+            </div>
+            <div class="list-row__price">฿80</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names">
+              <span class="list-row__en">Cream Corn Soup</span>
+              <span class="list-row__th">ซุปข้าวโพด</span>
+            </div>
+            <div class="list-row__price">฿80</div>
+          </div>
+        </div>
+
+        <!-- POTATO SIDES -->
+        <div class="list-group">
+          <span class="list-group__label">Potatoes · มัน</span>
+          <div class="list-row avoid-break">
+            <div class="list-row__names">
+              <span class="list-row__en">Mashed Potatoes</span>
+              <span class="list-row__th">มันบด</span>
+            </div>
+            <div class="list-row__price">฿95</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names">
+              <span class="list-row__en">Mashed Potatoes with Gravy</span>
+              <span class="list-row__th">มันบดราดซอสเกรวี</span>
+            </div>
+            <div class="list-row__price">฿120</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names">
+              <span class="list-row__en">Baked Mashed Potatoes with Cheese</span>
+              <span class="list-row__th">มันอบชีส</span>
+            </div>
+            <div class="list-row__price">฿135</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: VEGGIE SIDES + BREAD -->
+      <div>
+        <div class="list-group">
+          <span class="list-group__label">Vegetables · ผัก</span>
+          <div class="list-row avoid-break">
+            <div class="list-row__names">
+              <span class="list-row__en">Baked Garlic</span>
+              <span class="list-row__th">กระเทียมอบ</span>
+            </div>
+            <div class="list-row__price">฿90</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names">
+              <span class="list-row__en">Mac &amp; Cheese</span>
+              <span class="list-row__th">มักกะโรนีชีส</span>
+            </div>
+            <div class="list-row__price">฿150</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names">
+              <span class="list-row__en">Spinach with Garlic Cream</span>
+              <span class="list-row__th">ผักโขมผัดครีมกระเทียม</span>
+            </div>
+            <div class="list-row__price">฿120</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names">
+              <span class="list-row__en">Spinach with Garlic</span>
+              <span class="list-row__th">ผักโขมผัดกระเทียม</span>
+            </div>
+            <div class="list-row__price">฿100</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names">
+              <span class="list-row__en">Baked Spinach with Cheese</span>
+              <span class="list-row__th">ผักโขมอบชีส</span>
+            </div>
+            <div class="list-row__price">฿175</div>
+          </div>
+        </div>
+
+        <div class="list-group">
+          <span class="list-group__label">Bread · ขนมปัง</span>
+          <div class="list-row avoid-break">
+            <div class="list-row__names">
+              <span class="list-row__en">Toasted Garlic Bread</span>
+              <span class="list-row__th">ขนมปังกระเทียมอบ</span>
+            </div>
+            <div class="list-row__price">฿110</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names">
+              <span class="list-row__en">Toasted Garlic Bread with Cheese</span>
+              <span class="list-row__th">ขนมปังกระเทียมอบชีส</span>
+            </div>
+            <div class="list-row__price">฿130</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /list-2col -->
+  </div><!-- /content -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE 7 (cont.) — SALADS
+═══════════════════════════════════════════ -->
+<div id="salads" class="page-break">
+  <div class="section-band avoid-break">
+    <div>
+      <span class="section-band__eyebrow">Fresh &amp; Raw</span>
+      <h2 class="section-band__title">Salads</h2>
+    </div>
+    <div class="section-band__right">
+      <div class="section-band__th">สลัด</div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="items-grid">
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Saha Signature Salad</h3>
+          <div class="item-name-th">สลัดซิกเนเจอร์บัลซามิก</div>
+          <p class="item-desc">House balsamic dressing · Seasonal greens</p>
+          <div class="item-foot">
+            <div class="price-tag"><div class="price-tag__k">Price</div><div class="price-tag__v">฿190</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Burrata Salad</h3>
+          <div class="item-name-th">สลัดชีสบูราต้า</div>
+          <p class="item-desc">Fresh burrata · Heirloom tomato · Basil oil</p>
+          <div class="item-foot">
+            <div class="price-tag"><div class="price-tag__k">Price</div><div class="price-tag__v">฿280</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Classic Caesar</h3>
+          <div class="item-name-th">ซีซาร์สลัดคลาสสิก</div>
+          <p class="item-desc">Cos lettuce · House Caesar dressing · Anchovy · Parmesan</p>
+          <div class="item-foot">
+            <div class="price-tag"><div class="price-tag__k">Price</div><div class="price-tag__v">฿190</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Japanese Sesame</h3>
+          <div class="item-name-th">สลัดงาญี่ปุ่น</div>
+          <p class="item-desc">Mixed greens · Toasted sesame dressing · Japanese style</p>
+          <div class="item-foot">
+            <div class="price-tag"><div class="price-tag__k">Price</div><div class="price-tag__v">฿190</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Bijin Tomato</h3>
+          <div class="item-name-th">สลัดมะเขือเทศบิจิน</div>
+          <p class="item-desc">Japanese Bijin tomatoes · Light ponzu dressing</p>
+          <div class="item-foot">
+            <div class="price-tag"><div class="price-tag__k">Price</div><div class="price-tag__v">฿190</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Avocado Salad</h3>
+          <div class="item-name-th">สลัดอโวคาโด</div>
+          <p class="item-desc">Ripe avocado · Mixed greens · House vinaigrette</p>
+          <div class="item-foot">
+            <div class="price-tag"><div class="price-tag__k">Price</div><div class="price-tag__v">฿215</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Beef Carpaccio</h3>
+          <div class="item-name-th">คาร์ปาชโชเนื้อ</div>
+          <p class="item-desc">Paper-thin raw beef · Capers · Parmesan · Truffle oil</p>
+          <div class="item-foot">
+            <div class="price-tag"><div class="price-tag__k">Price</div><div class="price-tag__v">฿250</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Yukke (Yukhoe)</h3>
+          <div class="item-name-th">ยูกเกะ ยำเนื้อดิบสไตล์เกาหลี</div>
+          <p class="item-desc">Korean-style raw beef · Sweet soy · Asian pear · Sesame</p>
+          <div class="item-foot">
+            <div class="price-tag"><div class="price-tag__k">Price</div><div class="price-tag__v">฿350</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-card avoid-break">
+        <div class="photo-ph"></div>
+        <div class="item-body">
+          <h3 class="item-name">Soy Ju Inter</h3>
+          <div class="item-name-th">ซอยจุ๊อินเตอร์</div>
+          <p class="item-desc">ซอยจุ๊ประยุกต์ ใช้เนื้อเทนเดอร์ลอยน์ล้วนๆ ผสมเครื่องยำแซ่บนัวลงตัวสุด<br>E-san style spicy raw beef · Pure tenderloin · Signature dressing</p>
+          <div class="item-foot">
+            <div class="price-tag"><div class="price-tag__k">Signature</div><div class="price-tag__v">฿550</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE 8 — PASTA
+═══════════════════════════════════════════ -->
+<div id="pasta" class="page-break">
+  <div class="section-band avoid-break">
+    <div>
+      <span class="section-band__eyebrow">From the Kitchen</span>
+      <h2 class="section-band__title">Pasta</h2>
+    </div>
+    <div class="section-band__right">
+      <div class="section-band__th">พาสต้า</div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="pasta-intro">
+      Choose your pasta shape —
+      <strong>Spaghetti</strong> &nbsp;·&nbsp;
+      <strong>Fettuccine</strong> &nbsp;·&nbsp;
+      <strong>Penne</strong>
+      <br>then pair with any sauce below
+    </div>
+
+    <div class="pasta-row avoid-break">
+      <div class="pasta-row__sauce">Fried Chilli Garlic</div>
+      <div class="pasta-row__opts">
+        <span>Bacon <b>฿175</b></span>
+        <span>Pork Sausage <b>฿230</b></span>
+        <span>Prawn <b>฿280</b></span>
+        <span>Salmon <b>฿350</b></span>
+      </div>
+    </div>
+
+    <div class="pasta-row avoid-break">
+      <div class="pasta-row__sauce">Truffle Sauce</div>
+      <div class="pasta-row__opts">
+        <span>Mushroom <b>฿220</b></span>
+        <span>Scallops <b>฿350</b></span>
+        <span>Tenderloin <b>฿350</b></span>
+      </div>
+    </div>
+
+    <div class="pasta-row avoid-break">
+      <div class="pasta-row__sauce">Bolognese</div>
+      <div class="pasta-row__opts">
+        <span>Meatball</span>
+      </div>
+    </div>
+
+    <div class="pasta-row avoid-break">
+      <div class="pasta-row__sauce">House Cream Sauce</div>
+      <div class="pasta-row__opts">
+        <span>Meatball</span>
+        <span>Bacon</span>
+        <span>Scallops</span>
+      </div>
+    </div>
+
+    <div class="pasta-row avoid-break">
+      <div class="pasta-row__sauce">Keemao Spicy</div>
+      <div class="pasta-row__opts">
+        <span>Bacon</span>
+        <span>Mixed Seafood</span>
+      </div>
+    </div>
+
+    <div class="pasta-row avoid-break">
+      <div class="pasta-row__sauce">Kaprao Spicy</div>
+      <div class="pasta-row__opts">
+        <span>Bacon</span>
+        <span>Mixed Seafood</span>
+        <span>Tenderloin</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE 9 — RICE DISHES / อาหารจานเดียว
+═══════════════════════════════════════════ -->
+<div id="rice" class="page-break">
+  <div class="section-band avoid-break">
+    <div>
+      <span class="section-band__eyebrow">One-Plate Dishes</span>
+      <h2 class="section-band__title">Rice Dishes</h2>
+    </div>
+    <div class="section-band__right">
+      <div class="section-band__th">อาหารจานเดียว</div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="list-group">
+      <span class="list-group__label">อาหารจานเดียว · One-Plate</span>
+      <div class="list-row avoid-break">
+        <div class="list-row__names">
+          <span class="list-row__en">Stir-fried Basil with Beef Tenderloin</span>
+          <span class="list-row__th">กะเพราเนื้อสันใน</span>
+        </div>
+      </div>
+      <div class="list-row avoid-break">
+        <div class="list-row__names">
+          <span class="list-row__en">Stir-fried Basil with Beef Shank</span>
+          <span class="list-row__th">กะเพราเนื้อน่องลายเอ็นแก้ว</span>
+        </div>
+      </div>
+      <div class="list-row avoid-break">
+        <div class="list-row__names">
+          <span class="list-row__en">Stir-fried Basil with Beef</span>
+          <span class="list-row__th">กะเพราเนื้อ</span>
+        </div>
+      </div>
+      <div class="list-row avoid-break">
+        <div class="list-row__names">
+          <span class="list-row__en">Fried Rice with Kaprao Basil Sauce &amp; Beef Steak</span>
+          <span class="list-row__th">ข้าวผัดซอสกะเพราสเต็กเนื้อ</span>
+        </div>
+      </div>
+      <div class="list-row avoid-break">
+        <div class="list-row__names">
+          <span class="list-row__en">Stir-fried Basil with Kurobuta Pork Tenderloin</span>
+          <span class="list-row__th">กระเพราสันในหมูดำคุโรบูตะ</span>
+        </div>
+      </div>
+      <div class="list-row avoid-break">
+        <div class="list-row__names">
+          <span class="list-row__en">Fried Rice with Crispy Wagyu Beef Fat</span>
+          <span class="list-row__th">ข้าวผัดมันเนื้อ</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="list-group">
+      <span class="list-group__label">Add-Ons · เพิ่มเติม</span>
+      <div class="list-row avoid-break">
+        <div class="list-row__names">
+          <span class="list-row__en">Fried Egg</span>
+          <span class="list-row__th">ไข่ดาว</span>
+        </div>
+      </div>
+      <div class="list-row avoid-break">
+        <div class="list-row__names">
+          <span class="list-row__en">Jasmine Rice</span>
+          <span class="list-row__th">ข้าวสวย</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE 10 — DRINKS
+═══════════════════════════════════════════ -->
+<div id="drinks" class="page-break">
+  <div class="section-band avoid-break">
+    <div>
+      <span class="section-band__eyebrow">Beverages</span>
+      <h2 class="section-band__title">Drinks</h2>
+    </div>
+    <div class="section-band__right">
+      <div class="section-band__th">เครื่องดื่ม</div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="drinks-cols">
+
+      <!-- LEFT: Soft / Non-alcoholic -->
+      <div>
+        <div class="list-group">
+          <span class="list-group__label">Soft Drinks · น้ำอัดลม</span>
+          <div class="list-row avoid-break">
+            <div class="list-row__names"><span class="list-row__en">Coke Original</span><span class="list-row__th">โค้กออริจินัล</span></div>
+            <div class="list-row__price">฿25</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names"><span class="list-row__en">Coke Zero</span><span class="list-row__th">โค้กซีโร่</span></div>
+            <div class="list-row__price">฿25</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names"><span class="list-row__en">Sprite</span><span class="list-row__th">สไปรท์</span></div>
+            <div class="list-row__price">฿25</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names"><span class="list-row__en">Schweppes Lemon Soda</span><span class="list-row__th">ชเวปส์เลมอนโซดา</span></div>
+            <div class="list-row__price">฿25</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names"><span class="list-row__en">Tonic Water</span><span class="list-row__th">โทนิควอเตอร์</span></div>
+            <div class="list-row__price">฿25</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names"><span class="list-row__en">Sing Lemon Soda</span><span class="list-row__th">น้ำมะนาวโซดาสิงห์</span></div>
+            <div class="list-row__price">฿25</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names"><span class="list-row__en">Soda</span><span class="list-row__th">โซดา</span></div>
+            <div class="list-row__price">฿25</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names"><span class="list-row__en">Mineral Water</span><span class="list-row__th">น้ำแร่</span></div>
+            <div class="list-row__price">฿30</div>
+          </div>
+        </div>
+
+        <div class="list-group">
+          <span class="list-group__label">Teas &amp; Juices · ชาและน้ำผลไม้</span>
+          <div class="list-row avoid-break">
+            <div class="list-row__names"><span class="list-row__en">Black Tea Honey Lemon</span><span class="list-row__th">ชาดำ Castown น้ำผึ้งมะนาว</span></div>
+            <div class="list-row__price">฿60</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names"><span class="list-row__en">Black Tea Raspberry</span><span class="list-row__th">ชาดำ Castown ราสพ์เชอริ่</span></div>
+            <div class="list-row__price">฿60</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names"><span class="list-row__en">Fresh Orange Juice</span><span class="list-row__th">น้ำส้มคั้นสด</span></div>
+            <div class="list-row__price">฿85</div>
+          </div>
+        </div>
+
+        <div class="list-group">
+          <span class="list-group__label">Coffee · กาแฟ</span>
+          <div class="list-row avoid-break">
+            <div class="list-row__names"><span class="list-row__en">Americano</span><span class="list-row__th">อเมริกาโน่</span></div>
+            <div class="list-row__price">฿80</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names"><span class="list-row__en">Espresso</span><span class="list-row__th">เอสเปรสโซ่</span></div>
+            <div class="list-row__price">฿80</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Beer + Wine + Other -->
+      <div>
+        <div class="list-group">
+          <span class="list-group__label">Beer · เบียร์</span>
+          <div class="list-row avoid-break">
+            <div class="list-row__names"><span class="list-row__en">Sapporo</span><span class="list-row__th">เบียร์ซัปโปโร</span><span class="list-row__sub">330 ml</span></div>
+            <div class="list-row__price">฿150</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names"><span class="list-row__en">Singha</span><span class="list-row__th">เบียร์สิงห์</span><span class="list-row__sub">620 ml</span></div>
+            <div class="list-row__price">฿160</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names"><span class="list-row__en">Heineken</span><span class="list-row__th">เบียร์ไฮนเกน</span><span class="list-row__sub">620 ml</span></div>
+            <div class="list-row__price">฿160</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names"><span class="list-row__en">Schneider Weiss</span><span class="list-row__th">เบียร์เชไวน์เดอร์ ไวส</span><span class="list-row__sub">500 ml · Wheat Beer</span></div>
+            <div class="list-row__price">฿280</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names"><span class="list-row__en">Jakobi Weissbier Hell</span><span class="list-row__th">เบียร์จาโคบิ ไวสเบียร์ เฮลล์</span><span class="list-row__sub">500 ml · Wheat Beer</span></div>
+            <div class="list-row__price">฿280</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names"><span class="list-row__en">Weihenstephaner Vitus</span><span class="list-row__th">เบียร์ไวเหนสเตฟานเนอร์ วีทุส</span><span class="list-row__sub">500 ml · Weizenbock</span></div>
+            <div class="list-row__price">฿280</div>
+          </div>
+        </div>
+
+        <div class="list-group">
+          <span class="list-group__label">Wine &amp; Other · ไวน์</span>
+          <div class="list-row avoid-break">
+            <div class="list-row__names"><span class="list-row__en">Wine</span><span class="list-row__th">ไวน์</span><span class="list-row__sub">Ask for today's selection</span></div>
+            <div class="list-row__price">฿220</div>
+          </div>
+          <div class="list-row avoid-break">
+            <div class="list-row__names"><span class="list-row__en">Ice Bucket</span><span class="list-row__th">ถังน้ำแข็ง</span></div>
+            <div class="list-row__price">฿20</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /drinks-cols -->
+  </div><!-- /content -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer class="menu-footer">
+  <img src="assets/saha-logo.png" alt="SAHA" class="menu-footer__logo">
+  <div class="menu-footer__name">SAHA</div>
+  <div class="menu-footer__hours">11.00 – 22.00</div>
+  <div class="menu-footer__th">หยุดทุกวันอังคาร · Last order 21.30</div>
+  <div class="menu-footer__info">
+    SAHA Steak &amp; Butcher · Bangkok<br>
+    Tel · 084 279 0999
+  </div>
+</footer>
+
+</body>
+</html>
